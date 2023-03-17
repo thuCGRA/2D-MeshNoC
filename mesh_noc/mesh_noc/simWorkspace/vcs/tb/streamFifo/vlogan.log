@@ -1,0 +1,10 @@
+
+Warning-[LINX_KRNL] Unsupported Linux kernel
+  Linux kernel '5.15.0-50-generic' is not supported.
+  Supported versions are 2.4* or 2.6*.
+
+Command: vlogan -nc -full64 -sverilog +v2k -ntb -debug_access+all -timescale=1ns/1ps \
+-l vlogan.log /home/cgra/newspace/NOC/spinal_noc/mesh_noc/tmp/job_1/streamFifo.v \
+./rtl/__simulation_def.v
+Parsing design file '/home/cgra/newspace/NOC/spinal_noc/mesh_noc/tmp/job_1/streamFifo.v'
+Parsing design file './rtl/__simulation_def.v'

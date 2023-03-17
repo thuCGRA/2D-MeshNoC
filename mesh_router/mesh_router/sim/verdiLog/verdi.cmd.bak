@@ -1,0 +1,590 @@
+debImport "-sv" \
+          "+incdir+/home/cgra/newspace/NOC/bsg_noc/test_noc/mesh_router/src" \
+          "-f" "filelist.f"
+debLoadSimResult /home/cgra/newspace/NOC/bsg_noc/test_noc/mesh_router/sim/tb.fsdb
+wvCreateWindow
+srcHBSelect "test_bench.top" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top" -delim "."
+srcHBSelect "test_bench.top" -win $_nTrace1
+srcHBSelect "test_bench.top.master" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.master" -delim "."
+srcHBSelect "test_bench.top.master" -win $_nTrace1
+srcHBSelect "test_bench.top.master.endpoint_example" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.master.endpoint_example" -delim "."
+srcHBSelect "test_bench.top.master.endpoint_example" -win $_nTrace1
+srcHBSelect "test_bench.top.master.endpoint_example.bme" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.master.endpoint_example.bme" -delim \
+           "."
+srcHBSelect "test_bench.top.master.endpoint_example.bme" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\]" -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\]" -win $_nTrace1
+srcHBSelect "test_bench.top.master.endpoint_example.bme" -win $_nTrace1
+srcHBSelect "test_bench.top.master.endpoint_example.bme" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.master.endpoint_example.bme" -delim \
+           "."
+srcHBSelect "test_bench.top.master.endpoint_example.bme" -win $_nTrace1
+srcHBSelect "test_bench.top.master.endpoint_example.lock_ctrl" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.master.endpoint_example.lock_ctrl" \
+           -delim "."
+srcHBSelect "test_bench.top.master.endpoint_example.lock_ctrl" -win $_nTrace1
+srcHBSelect "test_bench.top.master.endpoint_example.out_credit_ctr" -win \
+           $_nTrace1
+srcHBSelect "test_bench.top.master.endpoint_example.return_credit_fifo" -win \
+           $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.master.endpoint_example.return_credit_fifo" -delim \
+           "."
+srcHBSelect "test_bench.top.master.endpoint_example.return_credit_fifo" -win \
+           $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\]" -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\]" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node" -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[1\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[1\]" -delim "."
+srcHBSelect "test_bench.top.meshnode\[1\]" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[1\].mesh_node" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[1\].mesh_node" -delim "."
+srcHBSelect "test_bench.top.meshnode\[1\].mesh_node" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof27\[1\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node.rof27\[1\]" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof27\[1\]" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof27\[3\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node.rof27\[3\]" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof27\[3\]" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node.rof\[1\]" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\]" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node" -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node" -win $_nTrace1
+srcHBSelect "test_bench.top" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top" -delim "."
+srcHBSelect "test_bench.top" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node" -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\]" -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\]" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[1\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[1\]" -delim "."
+srcHBSelect "test_bench.top.meshnode\[1\]" -win $_nTrace1
+srcHBSelect "test_bench.top" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top" -delim "."
+srcHBSelect "test_bench.top" -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -inst "mesh_node" -line 59 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -inst "mesh_node" -line 59 -pos 1 -win $_nTrace1
+srcAction -pos 58 2 4 -win $_nTrace1 -name "mesh_node" -ctrlKey off
+srcDeselectAll -win $_nTrace1
+srcSelect -inst "mesh_node" -line 59 -pos 1 -win $_nTrace1
+srcAction -pos 58 2 4 -win $_nTrace1 -name "mesh_node" -ctrlKey off
+srcDeselectAll -win $_nTrace1
+srcSelect -inst "mesh_node" -line 59 -pos 1 -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\]" -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\]" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\]" -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\]" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\]" -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\]" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node" -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -win \
+           $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -delim \
+           "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -win \
+           $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node.rof\[0\]" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\]" -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "links_sif_i" -line 29 -pos 1 -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -delim \
+           "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.proc_rr_arb" \
+           -win $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.proc_rr_arb" \
+           -delim "."
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.proc_rr_arb" \
+           -win $_nTrace1
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.proc_rr_arb" \
+           -win $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.proc_rr_arb" \
+           -delim "."
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.proc_rr_arb" \
+           -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -delim \
+           "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.genblk3" \
+           -win $_nTrace1
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.proc_rr_arb.inputs_5" \
+           -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.genblk2" \
+           -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.genblk2" \
+           -win $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.genblk2" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.genblk2" \
+           -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.genblk3" \
+           -win $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.genblk3" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.genblk3" \
+           -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -delim \
+           "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.rof2\[0\].genblk1" \
+           -win $_nTrace1
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.rof2\[0\].genblk1" \
+           -win $_nTrace1
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.rof2\[0\].genblk1" \
+           -win $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.rof2\[0\].genblk1" \
+           -delim "."
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.rof2\[0\].genblk1" \
+           -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -delim \
+           "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "XY_order_p" -line 225 -pos 2 -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -delim \
+           "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.dor_decoder" \
+           -win $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.dor_decoder" \
+           -delim "."
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr.dor_decoder" \
+           -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -delim \
+           "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node" -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node" -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node.rof\[1\]" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\]" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -win \
+           $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -delim \
+           "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -win \
+           $_nTrace1
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.proc_rr_arb" \
+           -win $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.proc_rr_arb" \
+           -delim "."
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.proc_rr_arb" \
+           -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -win $_nTrace1 -range {20 35 1 7 1 5} -backward
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+wvSelectSignal -win $_nWave3 {( "G1" 9 )} 
+wvZoomOut -win $_nWave3
+wvZoomOut -win $_nWave3
+wvZoomOut -win $_nWave3
+wvZoomOut -win $_nWave3
+wvZoomOut -win $_nWave3
+wvZoomOut -win $_nWave3
+wvSelectSignal -win $_nWave3 {( "G1" 7 )} 
+wvSelectSignal -win $_nWave3 {( "G1" 6 )} 
+wvSelectSignal -win $_nWave3 {( "G1" 5 )} 
+wvSelectSignal -win $_nWave3 {( "G1" 4 )} 
+wvSelectSignal -win $_nWave3 {( "G1" 3 )} 
+wvSelectSignal -win $_nWave3 {( "G1" 9 )} 
+wvSelectSignal -win $_nWave3 {( "G1" 8 )} 
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -win \
+           $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -delim \
+           "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -win \
+           $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_o\[W\]" -line 300 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ready_i_stub\[W\]" -line 270 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_o\[W\]" -line 278 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ready_i_stub\[W\]" -line 278 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_o\[W\]" -line 278 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ready_i_stub\[W\]" -line 278 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_o\[W\]" -line 278 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ready_i_stub\[W\]" -line 270 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_o\[W\]" -line 278 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ready_i_stub\[W\]" -line 278 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_o\[W\]" -line 278 -pos 1 -win $_nTrace1
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.proc_rr_arb" \
+           -win $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.proc_rr_arb" \
+           -delim "."
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.proc_rr_arb" \
+           -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "yumi_i" -line 35 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_o" -line 33 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_o" -line 33 -pos 1 -win $_nTrace1
+srcAction -pos 32 5 2 -win $_nTrace1 -name "v_o" -ctrlKey off
+srcBackwardHistory -win $_nTrace1
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.proc_rr_arb" \
+           -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "yumi_i" -line 35 -pos 1 -win $_nTrace1
+srcBackwardHistory -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -win \
+           $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ready_i_stub\[W\]" -line 278 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_o\[W\]" -line 276 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_o\[W\]" -line 276 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_o\[W\]" -line 276 -pos 1 -win $_nTrace1
+srcAction -pos 275 6 0 -win $_nTrace1 -name "v_o\[W\]" -ctrlKey off
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "yumi_i" -line 35 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "yumi_i" -line 35 -pos 1 -win $_nTrace1
+srcAction -pos 34 5 0 -win $_nTrace1 -name "yumi_i" -ctrlKey off
+srcBackwardHistory -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.genblk2" \
+           -win $_nTrace1
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.genblk2.west_rr_arb" \
+           -win $_nTrace1
+srcSearchString "yumi_i" -win $_nTrace1 -next -case
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "tag_o" -line 925 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "last_r" -line 925 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "last_n" -line 924 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "hold_on_sr_p" -line 923 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "yumi_i" -line 930 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "yumi_i" -line 930 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "tag_o" -line 930 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "tag_o" -line 930 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "tag_o" -line 930 -pos 1 -win $_nTrace1
+srcAction -pos 929 10 1 -win $_nTrace1 -name "tag_o" -ctrlKey off
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.genblk2.west_rr_arb" \
+           -win $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.genblk2.west_rr_arb" \
+           -delim "."
+srcHBSelect \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.genblk2.west_rr_arb" \
+           -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -win \
+           $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -delim \
+           "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr" -win \
+           $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "W_sel_e" -line 274 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "W_sel_e" -line 274 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -inst "west_rr_arb" -line 267 -pos 1 -win $_nTrace1
+srcAction -pos 266 3 4 -win $_nTrace1 -name "west_rr_arb" -ctrlKey off
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "grants_o" -line 28 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "sel_one_hot_o" -line 29 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.genblk3" \
+           -win $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.genblk3" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.genblk3" \
+           -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -word -line 346 -pos 3 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "E_gnt_w" -line 347 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "E_gnt_p" -line 347 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 0
+wvScrollDown -win $_nWave3 0
+wvScrollDown -win $_nWave3 0
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvSelectSignal -win $_nWave3 {( "G1" 6 )} 
+wvSetCursor -win $_nWave3 889175.940138 -snap {("G1" 6)}
+srcActiveTrace \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[1\].bmrb.bmr.proc_rr_arb.sel_one_hot_o\[4:0\]" \
+           -win $_nTrace1 -TraceByDConWave -TraceTime 775000 -TraceValue 00100
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "grants_en_i" -line 282 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "grants_en_i" -line 282 -pos 1 -win $_nTrace1
+srcAction -pos 281 13 5 -win $_nTrace1 -name "grants_en_i" -ctrlKey off
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ready_i" -line 209 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "stub_p" -line 209 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "stub_p" -line 209 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ready_i_stub" -line 209 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollUp -win $_nWave3 1
+wvScrollDown -win $_nWave3 0
+wvScrollDown -win $_nWave3 0
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 1
+wvScrollDown -win $_nWave3 0
+wvScrollDown -win $_nWave3 0
+wvScrollDown -win $_nWave3 0
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "W_gnt_e" -line 273 -pos 1 -win $_nTrace1
+srcSearchString "W_gnt_e" -win $_nTrace1 -next -case
+srcSearchString "W_gnt_e" -win $_nTrace1 -next -case
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "req" -line 233 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_i_stub" -line 228 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ready_i_stub" -line 209 -pos 1 -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ready_i" -line 209 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ready_i_stub" -line 209 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "v_i_stub" -line 210 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -clipboard -win $_nTrace1
+wvDrop -win $_nWave3
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\]" -win $_nTrace1
+srcHBSelect "test_bench.top.stubbed_routers\[0\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.stubbed_routers\[0\]" -delim "."
+srcHBSelect "test_bench.top.stubbed_routers\[0\]" -win $_nTrace1
+srcHBSelect "test_bench.top.stubbed_routers\[0\].tie_up\[1\]" -win $_nTrace1
+srcHBSelect "test_bench.top.stubbed_routers\[0\].tie_up\[1\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.stubbed_routers\[0\].tie_up\[1\]" \
+           -delim "."
+srcHBSelect "test_bench.top.stubbed_routers\[0\].tie_up\[1\]" -win $_nTrace1
+srcHBSelect "test_bench.top.stubbed_routers\[0\].tie_up\[2\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.stubbed_routers\[0\].tie_up\[2\]" \
+           -delim "."
+srcHBSelect "test_bench.top.stubbed_routers\[0\].tie_up\[2\]" -win $_nTrace1
+srcHBSelect "test_bench.top.bmlst_proc" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.bmlst_proc" -delim "."
+srcHBSelect "test_bench.top.bmlst_proc" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node" -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\]" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node.rof\[0\]" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\]" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb" -win $_nTrace1
+srcSetScope -win $_nTrace1 "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb" \
+           -delim "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb" -win $_nTrace1
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\]" -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "repeater_output_p" -line 12 -pos 1 -win $_nTrace1
+srcSearchString "repeater_output_p" -win $_nTrace1 -next -case
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+srcSetScope -win $_nTrace1 \
+           "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -delim \
+           "."
+srcHBSelect "test_bench.top.meshnode\[0\].mesh_node.rof\[0\].bmrb.bmr" -win \
+           $_nTrace1
+wvScrollDown -win $_nWave3 1
+wvScrollUp -win $_nWave3 22
+wvSelectSignal -win $_nWave3 {( "G1" 3 )} 
+debExit

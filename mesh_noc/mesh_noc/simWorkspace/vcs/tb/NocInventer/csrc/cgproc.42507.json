@@ -1,0 +1,237 @@
+{
+    "Modules": {
+        "...MASTER...": {
+            "start_perf": [
+                0.37383699417114258,
+                0.12087299999999999,
+                0.043513999999999997,
+                321564,
+                321600,
+                1665984507.876776,
+                894311385595941
+            ],
+            "end_perf": [
+                0.37616801261901855,
+                0.122587,
+                0.044130999999999997,
+                322544,
+                322544,
+                894311394032455,
+                0,
+                0
+            ],
+            "child_modules": {
+                "NocInventer": 1,
+                "__simulation_def": 1,
+                "std": 1
+            },
+            "nQuads": 0,
+            "nRouts": 5,
+            "nMops": 0
+        },
+        "std": {
+            "start_perf": [
+                0.37623500823974609,
+                0.122637,
+                0.044149000000000001,
+                322544,
+                322544,
+                1665984507.879174,
+                894311394216681
+            ],
+            "end_perf": [
+                0.38374900817871094,
+                0.13014999999999999,
+                0.044149000000000001,
+                323508,
+                323508,
+                894311421330011,
+                12884901889,
+                0
+            ],
+            "child_modules": {},
+            "Compiled": "Yes",
+            "svclass": [
+                "$vcs_nba_dyn_obj",
+                576,
+                35,
+                2,
+                2,
+                0,
+                "sigprop$$",
+                576,
+                35,
+                2,
+                2,
+                0,
+                "process",
+                2380,
+                200,
+                8,
+                8,
+                0,
+                "event",
+                597,
+                34,
+                2,
+                2,
+                0,
+                "mailbox",
+                1769,
+                140,
+                9,
+                9,
+                0,
+                "semaphore",
+                1119,
+                84,
+                5,
+                5,
+                0
+            ],
+            "Compiled Times": 1,
+            "nQuads": 218,
+            "nMops": 528,
+            "nRouts": 35
+        },
+        "NocInventer": {
+            "start_perf": [
+                0.38379311561584473,
+                0.130194,
+                0.044149000000000001,
+                323508,
+                323508,
+                1665984507.8867321,
+                894311421421921
+            ],
+            "end_perf": [
+                0.38562703132629395,
+                0.13202800000000001,
+                0.044149000000000001,
+                323656,
+                323656,
+                894311428067561,
+                17179869185,
+                0
+            ],
+            "child_modules": {},
+            "Compiled": "Yes",
+            "Compiled Times": 1,
+            "nQuads": 16,
+            "nRouts": 8,
+            "nMops": 61
+        },
+        "__simulation_def": {
+            "start_perf": [
+                0.38565897941589355,
+                0.13206100000000001,
+                0.044149000000000001,
+                323656,
+                323656,
+                1665984507.888598,
+                894311428139481
+            ],
+            "end_perf": [
+                0.38680291175842285,
+                0.13320399999999999,
+                0.044149000000000001,
+                323656,
+                323656,
+                894311432291965,
+                21474836481,
+                0
+            ],
+            "child_modules": {},
+            "Compiled": "Yes",
+            "Compiled Times": 1,
+            "nQuads": 16,
+            "nRouts": 8,
+            "nMops": 17
+        }
+    },
+    "stat": {
+        "ru_self_end": {
+            "ru_nvcsw": 61,
+            "ru_stime_sec": 0.044149000000000001,
+            "ru_utime_sec": 0.139125,
+            "ru_maxrss_kb": 135452,
+            "ru_minflt": 12781,
+            "ru_majflt": 0,
+            "ru_nivcsw": 20
+        },
+        "ru_childs_end": {
+            "ru_nvcsw": 47,
+            "ru_stime_sec": 0.030550999999999998,
+            "ru_utime_sec": 0.093542,
+            "ru_maxrss_kb": 135452,
+            "ru_minflt": 11543,
+            "ru_majflt": 0,
+            "ru_nivcsw": 8
+        },
+        "peak_mem_kb": 323692,
+        "cpu_cycles_end": 894311659882450
+    },
+    "CompUnits": {
+        "U3bwm_d": {
+            "archive": "archive.0/_42507_archive_1.a",
+            "mod": "__simulation_def",
+            "text": 499,
+            "out": "U3bwm_d.o",
+            "bytes": 9010,
+            "mode": 4,
+            "checksum": 0
+        },
+        "amcQw_d": {
+            "mod": "...MASTER...",
+            "text": 458,
+            "out": "objs/amcQw_d.o",
+            "bytes": 8014,
+            "mode": 4,
+            "checksum": 0
+        },
+        "Hp8GB_d": {
+            "archive": "archive.0/_42507_archive_1.a",
+            "mod": "NocInventer",
+            "text": 668,
+            "out": "Hp8GB_d.o",
+            "bytes": 7510,
+            "mode": 4,
+            "checksum": 0
+        },
+        "reYIK_d": {
+            "archive": "archive.0/_42507_archive_1.a",
+            "cls": 7017,
+            "mod": "std",
+            "text": 7325,
+            "out": "reYIK_d.o",
+            "bytes": 43064,
+            "mode": 4,
+            "checksum": 0
+        }
+    },
+    "reusePaths": {},
+    "ObjArchives": [
+        {
+            "archive": "archive.0/_42507_archive_1.a",
+            "size": 188462,
+            "objects": [
+                [
+                    "reYIK_d.o",
+                    43064
+                ],
+                [
+                    "Hp8GB_d.o",
+                    7510
+                ],
+                [
+                    "U3bwm_d.o",
+                    9010
+                ],
+                [
+                    "amcQwB.o",
+                    128878
+                ]
+            ]
+        }
+    ]
+}

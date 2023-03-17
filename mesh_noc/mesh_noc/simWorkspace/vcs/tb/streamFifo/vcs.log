@@ -1,0 +1,54 @@
+Command: vcs -full64 -quiet -timescale=1ns/1ps -debug_access+all -debug_acc+pp+dmptf \
+-debug_region=+cell+encrypt -l vcs.log +vpi +vcs+initreg+random -load /home/cgra/newspace/NOC/spinal_noc/mesh_noc/./simWorkspace/.pluginsCachePath/vpi_vcs.so:entry_point_cb \
+-o streamFifo -P /usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/novas.tab \
+/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/pli.a streamFifo __simulation_def \
+
+Doing common elaboration 
+
+Warning-[DBGACC_REG] Unrecognized '-debug_region' option
+  Option '' is not a valid '-debug_region' option.
+  Please recompile using the '-debug_access<+options>' switch and incremental 
+  options as required.  Recommended options are '-debug_access' for 
+  post-process debug, '-debug_access+class' for testbench debug, and 
+  '-debug_access+all' for all debug capabilities.  Refer the VCS user guide 
+  for more granular options for debug control under the switch '-debug_access'
+  and refer to '-debug_region' for region control.
+
+
+Warning-[VPI-CT-NS] VPI function is not supported
+  The VPI function 'vpi_register_cb' is not supported in the compiler.
+
+
+Warning-[VPI-CT-NS] VPI function is not supported
+  The VPI function 'vpi_chk_error' is not supported in the compiler.
+
+
+Warning-[VPI-CT-NS] VPI function is not supported
+  The VPI function 'vpi_chk_error' is not supported in the compiler.
+
+
+Warning-[VPI-CT-NS] VPI function is not supported
+  The VPI function 'vpi_register_cb' is not supported in the compiler.
+
+
+Warning-[VPI-CT-NS] VPI function is not supported
+  The VPI function 'vpi_chk_error' is not supported in the compiler.
+
+
+Warning-[VPI-CT-NS] VPI function is not supported
+  The VPI function 'vpi_chk_error' is not supported in the compiler.
+
+
+Warning-[VPI-CT-NS] VPI function is not supported
+  The VPI function 'vpi_register_cb' is not supported in the compiler.
+
+
+Warning-[VPI-CT-NS] VPI function is not supported
+  The VPI function 'vpi_chk_error' is not supported in the compiler.
+
+
+Warning-[VPI-CT-NS] VPI function is not supported
+  The VPI function 'vpi_chk_error' is not supported in the compiler.
+
+2 modules and 0 UDP read.
+../streamFifo up to date

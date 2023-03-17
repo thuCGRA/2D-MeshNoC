@@ -1,0 +1,91 @@
+@verdi rc file Version 1.0
+[General]
+saveDB = TRUE
+relativePath = FALSE
+saveSingleView = FALSE
+saveNWaveWinId = 
+VerdiVersion = Verdi_O-2018.09-SP2
+[KeyNote]
+Line1 = Automatic Backup 0
+Line2 = Save Open Database Information: Yes
+Line3 = Path Option: Absolute Paths
+Line4 = Windows Option: All Windows
+[TestBench]
+ConstrViewShow = 0
+InherViewShow = 0
+FSDBMsgShow = 0
+AnnotationShow = 0
+Console = TRUE
+powerDumped = 0
+[hb]
+postSimFile = /home/cgra/newspace/NOC/bsg_noc/test_noc/mesh_router/sim/tb.fsdb
+syncTime = 775000
+viewport = 63 26 1854 862 0 0 88 851
+activeNode = "test_bench.top.meshnode[0].mesh_node.rof[1].bmrb.bmr.proc_rr_arb"
+activeScope = "test_bench.top.meshnode[0].mesh_node.rof[1].bmrb.bmr.proc_rr_arb"
+activeFile = "../src/bsg_round_robin_arb.v"
+interactiveMode = False
+viewType = Source
+simulatorMode = False
+sourceBeginLine = 21
+baMode = False
+srcLineNum = True
+AutoWrap = True
+IdentifyFalseLogic = False
+syncSignal = True
+traceMode = Hierarchical
+showTraceInSchema = True
+paMode = False
+funcMode = False
+powerAwareAnnot = True
+amsAnnot = True
+traceCrossHier = True
+DnDtraceCrossHierOnly = True
+traceIncTopPort = False
+leadingZero = False
+signalPane = False
+Scope1 = "test_bench.top.meshnode[0].mesh_node.rof[1].bmrb.bmr.proc_rr_arb"
+Scope2 = "test_bench.top.meshnode[0].mesh_node.rof[0].bmrb.bmr"
+Scope3 = "test_bench.top.meshnode[0].mesh_node.rof[0].bmrb"
+Scope4 = "test_bench.top.meshnode[0].mesh_node.rof[0]"
+Scope5 = "test_bench.top.meshnode[0].mesh_node"
+Scope6 = "test_bench.top.bmlst_proc"
+Scope7 = "test_bench.top.stubbed_routers[0].tie_up[2]"
+Scope8 = "test_bench.top.stubbed_routers[0].tie_up[1]"
+Scope9 = "test_bench.top.stubbed_routers[0]"
+Scope10 = "test_bench.top.meshnode[0].mesh_node.rof[1].bmrb.bmr"
+multipleSelection = 1 21 5 0 0
+sdfCheckUndef = FALSE
+simFlow = FALSE
+[hb.design]
+importCmd = "-sv" "+incdir+/home/cgra/newspace/NOC/bsg_noc/test_noc/mesh_router/src" "-f" "filelist.f" 
+invokeDir = /home/cgra/newspace/NOC/bsg_noc/test_noc/mesh_router/sim
+[hb.sourceTab.1]
+scope = test_bench.top.meshnode[0].mesh_node.rof[1].bmrb.bmr.proc_rr_arb
+File = /home/cgra/newspace/NOC/bsg_noc/test_noc/mesh_router/src/bsg_round_robin_arb.v
+Line = 22
+[nMemoryManager]
+WaveformFile = /home/cgra/newspace/NOC/bsg_noc/test_noc/mesh_router/sim/tb.fsdb
+UserActionNum = 0
+nMemWindowNum = 0
+[wave.0]
+viewPort = 0 27 1854 401 270 255
+primaryWindow = TRUE
+SessionFile = /home/cgra/newspace/NOC/bsg_noc/test_noc/mesh_router/sim/verdiLog/novas_autosave.ses.wave.0
+displayGrid = FALSE
+hierarchicalName = FALSE
+snap = TRUE
+displayLeadingZeros = FALSE
+fixDelta = FALSE
+displayCursorMarker = FALSE
+autoUpdate = FALSE
+highlightGlitchs = FALSE
+waveformSyncCursorMarker = FALSE
+waveformSyncHorizontalRange = FALSE
+waveformSyncVerticalscroll = FALSE
+displayErrors = TRUE
+displayMsgSymbols = TRUE
+showMsgDescriptions = TRUE
+autoFit = FALSE
+displayDeltaY = FALSE
+centerCursor = FALSE

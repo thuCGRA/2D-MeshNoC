@@ -1,0 +1,2 @@
+Command Line: /usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas -sv +incdir+/home/cgra/newspace/NOC/bsg_noc/test_noc/mesh_router/src -f filelist.f -ssf ./tb.fsdb
+uname(Linux cgra-vm 5.15.0-50-generic #56~20.04.1-Ubuntu SMP Tue Sep 27 15:51:29 UTC 2022 x86_64)

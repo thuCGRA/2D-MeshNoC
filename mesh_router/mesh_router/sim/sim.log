@@ -1,0 +1,104 @@
+Command: /home/cgra/newspace/NOC/bsg_noc/test_noc/mesh_router/sim/./tb.simv -l sim.log +nospecify +notimingcheck +fsdb+autoflush -cm line+tgl+cond+fsm
+Chronologic VCS simulator copyright 1991-2018
+Contains Synopsys proprietary information.
+Compiler version O-2018.09-SP2_Full64; Runtime version O-2018.09-SP2_Full64;  Oct  4 23:47 2022
+VCD+ Writer O-2018.09-SP2_Full64 Copyright (c) 1991-2018 by Synopsys Inc.
+## bsg_mem_1r1w: instantiating width_p=         56, els_p=          4, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.master.endpoint_example.bme.fifo.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         56, els_p=          4, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.slave.endpoint_example.bme.fifo.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         56, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[0].mesh_node.rof[0].bmrb.rof[0].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         56, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[0].mesh_node.rof[0].bmrb.rof[1].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         56, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[0].mesh_node.rof[0].bmrb.rof[2].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         56, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[0].mesh_node.rof[0].bmrb.rof[3].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         56, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[0].mesh_node.rof[0].bmrb.rof[4].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         48, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[0].mesh_node.rof[1].bmrb.rof[0].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         48, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[0].mesh_node.rof[1].bmrb.rof[1].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         48, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[0].mesh_node.rof[1].bmrb.rof[2].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         48, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[0].mesh_node.rof[1].bmrb.rof[3].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         48, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[0].mesh_node.rof[1].bmrb.rof[4].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         56, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[1].mesh_node.rof[0].bmrb.rof[0].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         56, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[1].mesh_node.rof[0].bmrb.rof[1].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         56, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[1].mesh_node.rof[0].bmrb.rof[2].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         56, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[1].mesh_node.rof[0].bmrb.rof[3].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         56, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[1].mesh_node.rof[0].bmrb.rof[4].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         48, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[1].mesh_node.rof[1].bmrb.rof[0].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         48, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[1].mesh_node.rof[1].bmrb.rof[1].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         48, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[1].mesh_node.rof[1].bmrb.rof[2].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         48, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[1].mesh_node.rof[1].bmrb.rof[3].fi.twofer.mem_1r1w)
+## bsg_mem_1r1w: instantiating width_p=         48, els_p=          2, read_write_same_addr_p=          0, harden_p=          0 (test_bench.top.meshnode[1].mesh_node.rof[1].bmrb.rof[4].fi.twofer.mem_1r1w)
+
+
+
+########################## Time:                   0, Dump Start ######################
+
+
+TimeScale of test_bench is 1 ns / 1 ps 
+*Verdi* Loading libsscore_vcs201809.so
+FSDB Dumper for VCS, Release Verdi_O-2018.09-SP2, Linux x86_64/64bit, 02/21/2019
+(C) 1996 - 2019 by Synopsys, Inc.
+*Verdi* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
+*Verdi* : Create FSDB file 'tb.fsdb'
+*Verdi* : Begin traversing the scope (test_bench), layer (0).
+*Verdi* : Enable +mda dumping.
+*Verdi* : End of traversing.
+
+
+ Bit Test: f   
+
+
+test_bench.clock_gen with cycle_time_p          50
+__________ ___________  _______________________________
+\______   \\_   _____/ /   _____/\_   _____/\__    ___/
+ |       _/ |    __)_  \_____  \  |    __)_   |    |   
+ |    |   \ |        \ /        \ |        \  |    |  1->0 time =          0
+ |____|_  //_______  //_______  //_______  /  |____|   
+ ASYNC  \/         \/         \/         \/            
+__________ ___________  _______________________________
+\______   \\_   _____/ /   _____/\_   _____/\__    ___/
+ |       _/ |    __)_  \_____  \  |    __)_   |    |   
+ |    |   \ |        \ /        \ |        \  |    |  0->1 time =          0
+ |____|_  //_______  //_______  //_______  /  |____|   
+ ASYNC  \/         \/         \/         \/            
+__________ ___________  _______________________________
+\______   \\_   _____/ /   _____/\_   _____/\__    ___/
+ |       _/ |    __)_  \_____  \  |    __)_   |    |   
+ |    |   \ |        \ /        \ |        \  |    |  1->0 time =        500
+ |____|_  //_______  //_______  //_______  /  |____|   
+ ASYNC  \/         \/         \/         \/            
+cycle           7, returned=00000000, expected=000
+cycle           8, returned=00000001, expected=001
+cycle           9, returned=00000002, expected=002
+cycle          10, returned=00000003, expected=003
+cycle          11, returned=00000004, expected=004
+cycle          12, returned=00000005, expected=005
+cycle          13, returned=00000006, expected=006
+cycle          14, returned=00000007, expected=007
+cycle          15, returned=00000008, expected=008
+cycle          16, returned=00000009, expected=009
+cycle          17, returned=0000000a, expected=00a
+cycle          18, returned=0000000b, expected=00b
+cycle          19, returned=0000000c, expected=00c
+cycle          20, returned=0000000d, expected=00d
+cycle          21, returned=0000000e, expected=00e
+cycle          22, returned=0000000f, expected=00f
+cycle          23, returned=00000010, expected=010
+cycle          24, returned=00000011, expected=011
+cycle          25, returned=00000012, expected=012
+cycle          26, returned=00000013, expected=013
+cycle          27, returned=00000014, expected=014
+cycle          28, returned=00000015, expected=015
+cycle          29, returned=00000016, expected=016
+cycle          30, returned=00000017, expected=017
+cycle          31, returned=00000018, expected=018
+cycle          32, returned=00000019, expected=019
+cycle          33, returned=0000001a, expected=01a
+cycle          34, returned=0000001b, expected=01b
+cycle          35, returned=0000001c, expected=01c
+cycle          36, returned=0000001d, expected=01d
+cycle          37, returned=0000001e, expected=01e
+cycle          38, returned=0000001f, expected=01f
+$finish called from file "../src/tb/test_bench.v", line 63.
+$finish at simulation time              4025000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 4025000 ps
+CPU Time:      0.350 seconds;       Data structure size:   0.2Mb
+Tue Oct  4 23:47:25 2022

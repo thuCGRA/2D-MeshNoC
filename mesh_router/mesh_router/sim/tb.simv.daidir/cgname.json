@@ -1,0 +1,98 @@
+{
+    "std": [
+        "std",
+        "reYIK",
+        "module",
+        1
+    ],
+    "test_bench": [
+        "test_bench",
+        "YMuFK",
+        "module",
+        15
+    ],
+    "bsg_mux_one_hot_0002": [
+        "bsg_mux_one_hot_0002",
+        "N5HtU",
+        "module",
+        2
+    ],
+    "bsg_manycore_link_sif_tieoff": [
+        "bsg_manycore_link_sif_tieoff",
+        "zMa8x",
+        "module",
+        12
+    ],
+    "bsg_mux_one_hot_0003": [
+        "bsg_mux_one_hot_0003",
+        "fjfGt",
+        "module",
+        3
+    ],
+    "bsg_mux_one_hot_0005": [
+        "bsg_mux_one_hot_0005",
+        "IxEhI",
+        "module",
+        5
+    ],
+    "bsg_mux_one_hot_0004": [
+        "bsg_mux_one_hot_0004",
+        "Fdbtk",
+        "module",
+        4
+    ],
+    "bsg_round_robin_arb_0000": [
+        "bsg_round_robin_arb_0000",
+        "nJmgr",
+        "module",
+        6
+    ],
+    "bsg_round_robin_arb_0001": [
+        "bsg_round_robin_arb_0001",
+        "PC73y",
+        "module",
+        7
+    ],
+    "bsg_round_robin_arb_0002": [
+        "bsg_round_robin_arb_0002",
+        "d71Gs",
+        "module",
+        8
+    ],
+    "bsg_two_fifo_0000_0000": [
+        "bsg_two_fifo_0000_0000",
+        "k7DQk",
+        "module",
+        9
+    ],
+    "bsg_two_fifo_0000_0001": [
+        "bsg_two_fifo_0000_0001",
+        "mEuzS",
+        "module",
+        10
+    ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        16
+    ],
+    "bsg_noc_pkg": [
+        "bsg_noc_pkg",
+        "QQcYw",
+        "module",
+        11
+    ],
+    "bsg_manycore_mesh_node_0000": [
+        "bsg_manycore_mesh_node_0000",
+        "zWrFp",
+        "module",
+        13
+    ],
+    "bsg_manycore_endpoint_standard_0000": [
+        "bsg_manycore_endpoint_standard_0000",
+        "LWZEI",
+        "module",
+        14
+    ]
+}

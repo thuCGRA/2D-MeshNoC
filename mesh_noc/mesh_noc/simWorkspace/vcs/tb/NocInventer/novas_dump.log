@@ -1,0 +1,320 @@
+#######################################################################################
+# log primitive debug message of FSDB dumping                                         #
+# This is for R&D to analyze when there are issues happening when FSDB dump           #
+#######################################################################################
+ANF: vcsd_get_serial_mode_status('./NocInventer: undefined symbol: vcsd_get_serial_mode_status')
+ANF: vcsd_enable_sva_success_callback('./NocInventer: undefined symbol: vcsd_enable_sva_success_callback')
+ANF: vcsd_disable_sva_success_callback('./NocInventer: undefined symbol: vcsd_disable_sva_success_callback')
+ANF: vcsd_get_power_scope_name('./NocInventer: undefined symbol: vcsd_get_power_scope_name')
+ANF: vcsd_begin_no_value_var_info('./NocInventer: undefined symbol: vcsd_begin_no_value_var_info')
+ANF: vcsd_end_no_value_var_info('./NocInventer: undefined symbol: vcsd_end_no_value_var_info')
+ANF: vcsd_remove_xprop_merge_mode_callback('./NocInventer: undefined symbol: vcsd_remove_xprop_merge_mode_callback')
+ANF: vhpi_get_cb_info('./NocInventer: undefined symbol: vhpi_get_cb_info')
+ANF: vhpi_free_handle('./NocInventer: undefined symbol: vhpi_free_handle')
+ANF: vhpi_fetch_vcsd_handle('./NocInventer: undefined symbol: vhpi_fetch_vcsd_handle')
+ANF: vhpi_fetch_vpi_handle('./NocInventer: undefined symbol: vhpi_fetch_vpi_handle')
+ANF: vhpi_has_verilog_parent('./NocInventer: undefined symbol: vhpi_has_verilog_parent')
+ANF: vhpi_is_verilog_scope('./NocInventer: undefined symbol: vhpi_is_verilog_scope')
+ANF: scsd_xprop_is_enabled('./NocInventer: undefined symbol: scsd_xprop_is_enabled')
+ANF: scsd_xprop_sig_is_promoted('./NocInventer: undefined symbol: scsd_xprop_sig_is_promoted')
+ANF: scsd_xprop_int_xvalue('./NocInventer: undefined symbol: scsd_xprop_int_xvalue')
+ANF: scsd_xprop_bool_xvalue('./NocInventer: undefined symbol: scsd_xprop_bool_xvalue')
+ANF: scsd_xprop_enum_xvalue('./NocInventer: undefined symbol: scsd_xprop_enum_xvalue')
+ANF: scsd_xprop_register_merge_mode_cb('./NocInventer: undefined symbol: scsd_xprop_register_merge_mode_cb')
+ANF: scsd_xprop_delete_merge_mode_cb('./NocInventer: undefined symbol: scsd_xprop_delete_merge_mode_cb')
+ANF: scsd_xprop_get_merge_mode('./NocInventer: undefined symbol: scsd_xprop_get_merge_mode')
+ANF: scsd_thread_get_info('./NocInventer: undefined symbol: scsd_thread_get_info')
+ANF: scsd_thread_vc_init('./NocInventer: undefined symbol: scsd_thread_vc_init')
+ANF: scsd_master_set_delta_sync_cbk('./NocInventer: undefined symbol: scsd_master_set_delta_sync_cbk')
+ANF: scsd_fgp_get_fsdb_cores('./NocInventer: undefined symbol: scsd_fgp_get_fsdb_cores')
+ANF: msvEnableDumpingMode('./NocInventer: undefined symbol: msvEnableDumpingMode')
+ANF: msvGetVersion('./NocInventer: undefined symbol: msvGetVersion')
+ANF: msvGetInstProp('./NocInventer: undefined symbol: msvGetInstProp')
+ANF: msvIsSpiceEngineReady('./NocInventer: undefined symbol: msvIsSpiceEngineReady')
+ANF: msvSetAddProbeCallback('./NocInventer: undefined symbol: msvSetAddProbeCallback')
+ANF: msvGetInstHandle('./NocInventer: undefined symbol: msvGetInstHandle')
+ANF: msvGetProbeByInst('./NocInventer: undefined symbol: msvGetProbeByInst')
+ANF: msvGetSigHandle('./NocInventer: undefined symbol: msvGetSigHandle')
+ANF: msvGetProbeBySig('./NocInventer: undefined symbol: msvGetProbeBySig')
+ANF: msvGetProbeInfo('./NocInventer: undefined symbol: msvGetProbeInfo')
+ANF: msvRelease('./NocInventer: undefined symbol: msvRelease')
+ANF: msvSetVcCallbackFunc('./NocInventer: undefined symbol: msvSetVcCallbackFunc')
+ANF: msvCheckVcCallback('./NocInventer: undefined symbol: msvCheckVcCallback')
+ANF: msvAddVcCallback('./NocInventer: undefined symbol: msvAddVcCallback')
+ANF: msvRemoveVcCallback('./NocInventer: undefined symbol: msvRemoveVcCallback')
+ANF: msvGetLatestValue('./NocInventer: undefined symbol: msvGetLatestValue')
+ANF: msvSetEndofSimCallback('./NocInventer: undefined symbol: msvSetEndofSimCallback')
+ANF: msvIgnoredProbe('./NocInventer: undefined symbol: msvIgnoredProbe')
+ANF: msvGetThruNetInfo('./NocInventer: undefined symbol: msvGetThruNetInfo')
+ANF: msvFreeThruNetInfo('./NocInventer: undefined symbol: msvFreeThruNetInfo')
+ANF: PI_ace_get_output_time_unit('./NocInventer: undefined symbol: PI_ace_get_output_time_unit')
+ANF: PI_ace_sim_sync('./NocInventer: undefined symbol: PI_ace_sim_sync')
+ANF: msvGetRereadInitFile('./NocInventer: undefined symbol: msvGetRereadInitFile')
+ANF: msvSetBeforeRereadCallback('./NocInventer: undefined symbol: msvSetBeforeRereadCallback')
+ANF: msvSetAfterRereadCallback('./NocInventer: undefined symbol: msvSetAfterRereadCallback')
+ANF: msvSetForceCallback('./NocInventer: undefined symbol: msvSetForceCallback')
+ANF: msvSetReleaseCallback('./NocInventer: undefined symbol: msvSetReleaseCallback')
+ANF: msvGetForceStatus('./NocInventer: undefined symbol: msvGetForceStatus')
+ANF: vhdi_dt_get_type('./NocInventer: undefined symbol: vhdi_dt_get_type')
+ANF: vhdi_dt_get_key('./NocInventer: undefined symbol: vhdi_dt_get_key')
+ANF: vhdi_dt_get_vhdl_enum_info('./NocInventer: undefined symbol: vhdi_dt_get_vhdl_enum_info')
+ANF: vhdi_dt_get_vhdl_physical_info('./NocInventer: undefined symbol: vhdi_dt_get_vhdl_physical_info')
+ANF: vhdi_dt_get_vhdl_array_info('./NocInventer: undefined symbol: vhdi_dt_get_vhdl_array_info')
+ANF: vhdi_dt_get_vhdl_record_info('./NocInventer: undefined symbol: vhdi_dt_get_vhdl_record_info')
+ANF: vhdi_def_traverse_module('./NocInventer: undefined symbol: vhdi_def_traverse_module')
+ANF: vhdi_def_traverse_scope('./NocInventer: undefined symbol: vhdi_def_traverse_scope')
+ANF: vhdi_def_traverse_variable('./NocInventer: undefined symbol: vhdi_def_traverse_variable')
+ANF: vhdi_def_get_module_id_by_vhpi('./NocInventer: undefined symbol: vhdi_def_get_module_id_by_vhpi')
+ANF: vhdi_def_get_handle_by_module_id('./NocInventer: undefined symbol: vhdi_def_get_handle_by_module_id')
+ANF: vhdi_def_get_variable_info_by_vhpi('./NocInventer: undefined symbol: vhdi_def_get_variable_info_by_vhpi')
+ANF: vhdi_def_free('./NocInventer: undefined symbol: vhdi_def_free')
+ANF: vhdi_ist_traverse_scope('./NocInventer: undefined symbol: vhdi_ist_traverse_scope')
+ANF: vhdi_ist_traverse_variable('./NocInventer: undefined symbol: vhdi_ist_traverse_variable')
+ANF: vhdi_ist_convert_by_vhpi('./NocInventer: undefined symbol: vhdi_ist_convert_by_vhpi')
+ANF: vhdi_ist_clone('./NocInventer: undefined symbol: vhdi_ist_clone')
+ANF: vhdi_ist_free('./NocInventer: undefined symbol: vhdi_ist_free')
+ANF: vhdi_ist_hash_key('./NocInventer: undefined symbol: vhdi_ist_hash_key')
+ANF: vhdi_ist_compare('./NocInventer: undefined symbol: vhdi_ist_compare')
+ANF: vhdi_ist_get_value_addr('./NocInventer: undefined symbol: vhdi_ist_get_value_addr')
+ANF: vhdi_set_scsd_callback('./NocInventer: undefined symbol: vhdi_set_scsd_callback')
+ANF: vhdi_cbk_set_force_callback('./NocInventer: undefined symbol: vhdi_cbk_set_force_callback')
+ANF: vhdi_trigger_init_force('./NocInventer: undefined symbol: vhdi_trigger_init_force')
+ANF: vhdi_ist_check_scsd_callback('./NocInventer: undefined symbol: vhdi_ist_check_scsd_callback')
+ANF: vhdi_ist_add_scsd_callback('./NocInventer: undefined symbol: vhdi_ist_add_scsd_callback')
+ANF: vhdi_ist_remove_scsd_callback('./NocInventer: undefined symbol: vhdi_ist_remove_scsd_callback')
+ANF: vhdi_ist_get_scsd_user_data('./NocInventer: undefined symbol: vhdi_ist_get_scsd_user_data')
+ANF: vhdi_add_time_change_callback('./NocInventer: undefined symbol: vhdi_add_time_change_callback')
+ANF: vhdi_get_real_value_by_value_addr('./NocInventer: undefined symbol: vhdi_get_real_value_by_value_addr')
+ANF: vhdi_get_64_value_by_value_addr('./NocInventer: undefined symbol: vhdi_get_64_value_by_value_addr')
+ANF: vhdi_xprop_inst_is_promoted('./NocInventer: undefined symbol: vhdi_xprop_inst_is_promoted')
+ANF: vdi_ist_convert_by_vhdi('./NocInventer: undefined symbol: vdi_ist_convert_by_vhdi')
+ANF: vhdi_ist_get_module_id('./NocInventer: undefined symbol: vhdi_ist_get_module_id')
+ANF: vhdi_refine_foreign_scope_type('./NocInventer: undefined symbol: vhdi_refine_foreign_scope_type')
+ANF: vhdi_flush_callback('./NocInventer: undefined symbol: vhdi_flush_callback')
+ANF: vhdi_set_orig_name('./NocInventer: undefined symbol: vhdi_set_orig_name')
+ANF: vhdi_set_dump_pt('./NocInventer: undefined symbol: vhdi_set_dump_pt')
+ANF: vhdi_get_fsdb_option('./NocInventer: undefined symbol: vhdi_get_fsdb_option')
+ANF: vhdi_fgp_get_mode('./NocInventer: undefined symbol: vhdi_fgp_get_mode')
+ANF: vhdi_node_register_composite_var('./NocInventer: undefined symbol: vhdi_node_register_composite_var')
+ANF: vhdi_node_analysis('./NocInventer: undefined symbol: vhdi_node_analysis')
+ANF: vhdi_node_id('./NocInventer: undefined symbol: vhdi_node_id')
+ANF: vhdi_node_ist_check_scsd_callback('./NocInventer: undefined symbol: vhdi_node_ist_check_scsd_callback')
+ANF: vhdi_node_ist_add_scsd_callback('./NocInventer: undefined symbol: vhdi_node_ist_add_scsd_callback')
+ANF: vhdi_node_ist_get_value_addr('./NocInventer: undefined symbol: vhdi_node_ist_get_value_addr')
+VCS compile option:
+ option[0]: ./NocInventer
+ option[1]: /usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2/linux64/bin/vcs1
+ option[2]: -Mcc=gcc
+ option[3]: -Mcplusplus=g++
+ option[4]: -Masflags=
+ option[5]: -Mcfl= -pipe -fPIC -O -I/usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2/include 
+ option[6]: -Mxcflags= -pipe -fPIC -I/usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2/include
+ option[7]: -Mldflags=-L/usr/lib/x86_64-linux-gnu -L/lib/x86_64-linux-gnu -Wl,--no-as-needed -Wl,--no-as-needed -rdynamic 
+ option[8]: -Mout=NocInventer
+ option[9]: -Mamsrun=
+ option[10]: -Mvcsaceobjs=
+ option[11]: -Mobjects= /usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2/linux64/lib/liberrorinf.so /usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2/linux64/lib/libsnpsmalloc.so /usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2/linux64/lib/libvfs.so /usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/pli.a 
+ option[12]: -Mexternalobj=
+ option[13]: -Msaverestoreobj=/usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2/linux64/lib/vcs_save_restore_new.o
+ option[14]: -Mcrt0=
+ option[15]: -Mcrtn=
+ option[16]: -Mcsrc=
+ option[17]: -Msyslibs=/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/pli.a -ldl -lm 
+ option[18]: -l
+ option[19]: vcs.log
+ option[20]: -uum
+ option[21]: NocInventer
+ option[22]: __simulation_def
+ option[23]: -mxunielab
+ option[24]: -uni_make
+ option[25]: -Xhdlxmropt
+ option[26]: -full64
+ option[27]: -q
+ option[28]: -timescale=1ns/1ps
+ option[29]: -debug_access+all
+ option[30]: +vpi
+ option[31]: +vcsd1
+ option[32]: +itf+/usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2/linux64/lib/vcsdp_lite.tab
+ option[33]: -debug_acc+pp+dmptf
+ option[34]: -debug_region=+cell+encrypt
+ option[35]: +vcs+initreg+random
+ option[36]: -load
+ option[37]: /home/cgra/newspace/NOC/spinal_noc/mesh_noc/./simWorkspace/.pluginsCachePath/vpi_vcs.so:entry_point_cb
+ option[38]: -o
+ option[39]: NocInventer
+ option[40]: -P
+ option[41]: /usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/novas.tab
+ option[42]: -full64
+ option[43]: 
+ option[44]: -uum
+ option[45]: -elaboration_options=/tmp/vcs_20221017052825_41183/elaboptfile_41183
+ option[46]: -full64
+ option[47]: -picarchive
+ option[48]: -P
+ option[49]: /usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/verdi.tab
+ option[50]: -fsdb
+ option[51]: +vpi
+ option[52]: -VHDLelab=-mxunielab -uni_make -nc -Xhdlxmropt -nc -q -exe NocInventer -uum -elaboration_options /tmp/vcs_20221017052825_41183/elaboptfile_41183 -picarchive -fsdb -debug_acc_options all+pp+dmptf -debug_region_options =+cell+encrypt 
+ option[53]: -gen_obj
+ option[54]: -f
+ option[55]: NocInventer.daidir/mxopt.db
+ option[56]: -load
+ option[57]: /usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/libnovas.so:FSDBDumpCmd
+ option[58]: timescale=1ns/1ps
+Chronologic Simulation VCS Release O-2018.09-SP2_Full64
+Linux 5.15.0-48-generic #54~20.04.1-Ubuntu SMP Thu Sep 1 16:17:26 UTC 2022 x86_64
+CPU cores: 8
+Limit information:
+======================================
+cputime		unlimited
+filesize		unlimited
+datasize		unlimited
+stacksize		8192 kbytes
+coredumpsize		0 kbytes
+memoryuse		unlimited
+vmemoryuse		unlimited
+descriptors		1048576
+memorylocked		65536 kbytes
+maxproc		23202
+======================================
+(Special)Runtime environment variables:
+
+Runtime environment variables:
+PATH=/tools/Xilinx/Vitis_HLS/2021.1/bin:/tools/Xilinx/Model_Composer/2021.1/bin:/tools/Xilinx/DocNav:/tools/Xilinx/Vivado/2021.1/bin:/home2/anaconda3/bin:/opt/scala-2.12.10/bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:/usr/eda/SCL2018/scl/2018.06/linux64/bin:/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/bin:/usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2/bin:/usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2/gui/dve/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/cgra/.local/share/coursier/bin
+INVOCATION_ID=37776e70c14b40b39ac62c20517ad1ed
+XAUTHORITY=/run/user/1000/gdm/Xauthority
+XMODIFIERS=@im=fcitx
+GDMSESSION=ubuntu
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+GTK_IM_MODULE=fcitx
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+SNPSLMD_LICENSE_FILE=27000@cgra-vm
+XDG_CURRENT_DESKTOP=ubuntu:GNOME
+JOURNAL_STREAM=8:50833
+SSH_AGENT_PID=1673
+LD_LIBRARY_PATH=/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/MODELSIM/LINUX64:/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/Ius/LINUX64:/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/IUS/LINUX64:/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64:/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/lib/LINUX64:
+COLORTERM=truecolor
+QT4_IM_MODULE=fcitx
+USERNAME=cgra
+SESSION_MANAGER=local/cgra-vm:@/tmp/.ICE-unix/1714,unix/cgra-vm:/tmp/.ICE-unix/1714
+LOGNAME=cgra
+MANAGERPID=1495
+PWD=/home/cgra/newspace/NOC/spinal_noc/mesh_noc
+IM_CONFIG_PHASE=1
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+VERDI_HOME=/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2
+LESSOPEN=| /usr/bin/lesspipe %s
+SHELL=/bin/bash
+LM_LICENSE_FILE=/usr/eda/License/Synopsys.dat
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/7cc0713f_f2e6_4cea_9e27_27e32a52255d
+GTK_MODULES=gail:atk-bridge
+CLUTTER_IM_MODULE=fcitx
+NPI_PLATFORM=LINUX64_GNU_472
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_SESSION_DESKTOP=ubuntu
+VCS_TARGET_ARCH=amd64
+SHLVL=1
+LESSCLOSE=/usr/bin/lesspipe %s %s
+QT_IM_MODULE=fcitx
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+TERM=xterm-256color
+NOVAS_INST_DIR=/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2
+GNOME_TERMINAL_SERVICE=:1.132
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+LANG=en_US.UTF-8
+XDG_SESSION_TYPE=x11
+VERDI_DIR=/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2
+DISPLAY=:0
+VCS_HOME=/usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2
+XDG_SESSION_CLASS=user
+NOVAS_HOME=/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2
+PRONOC_WORK=/home/cgra/NOC/ProNOC_svn/mpsoc_work
+DVE_HOME=/usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2/gui/dve
+XILINX_HLS=/tools/Xilinx/Vitis_HLS/2021.1
+GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+DESKTOP_SESSION=ubuntu
+USER=cgra
+XDG_MENU_PREFIX=gnome-
+VTE_VERSION=6003
+WINDOWPATH=2
+QT_ACCESSIBILITY=1
+GJS_DEBUG_OUTPUT=stderr
+CLASS_PATH=/home/cgra/Software/idea-IC-222.3739.54/lib/util.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/app.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/3rd-party-rt.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/jna.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/platform-statistics-devkit.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/jps-model.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/rd-core.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/rd-framework.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/stats.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/protobuf.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/external-system-rt.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/jsp-base-openapi.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/forms_rt.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/intellij-test-discovery.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/rd-swing.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/annotations.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/groovy.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/annotations-java5.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/asm-9.2.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/asm-analysis-9.2.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/asm-commons-9.2.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/asm-tree-9.2.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/asm-util-9.2.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/byte-buddy-agent.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/dom-impl.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/dom-openapi.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/duplicates-analysis.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/error-prone-annotations.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/externalProcess-rt.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/grpc-netty-shaded.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/idea_rt.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/intellij-coverage-agent-1.0.673.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/jffi-1.3.9-native.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/jffi-1.3.9.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/jnr-a64asm-1.0.0.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/jnr-ffi-2.2.12.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/jnr-x86asm-1.0.2.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/jsch-agent.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/junit.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/junit4.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/junixsocket-core.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/lz4-java.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/platform-objectSerializer-annotations.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/pty4j.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/rd-text.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/structuralsearch.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/tests_bootstrap.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/uast-tests.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/util_rt.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/winp.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/ant/lib/ant.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/dbus-java-3.2.1.jar:/home/cgra/Software/idea-IC-222.3739.54/lib/java-utils-1.0.6.jar
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+XILINX_VIVADO=/tools/Xilinx/Vivado/2021.1
+GNOME_SHELL_SESSION_MODE=ubuntu
+XDG_RUNTIME_DIR=/run/user/1000
+HOME=/home/cgra
+VCS_HEAP_EXEC=true
+VCS_PATHMAP_PRELOAD_DONE=1
+VCS_STACK_EXEC=true
+VCS_EXEC_DONE=1
+LC_ALL=C
+VCS_STOP_SAFE=1
+DVE=/usr/eda/vcs_mx2018/vcs-mx/O-2018.09-SP2/gui/dve
+SPECMAN_OUTPUT_TO_TTY=1
+Runtime command line arguments:
+argv[0]=./NocInventer
+258 profile - 100
+          CPU/Mem usage: 0.020 sys,  0.250 user,  183.07M mem
+259 Mon Oct 17 13:28:29 2022
+260 pliAppInit
+261 FSDB_GATE is set.
+262 FSDB_RTL is set.
+263 Enable Parallel Dumping.
+264 pliAppMiscSet: New Sim Round
+265 pliEntryInit
+266 LIBSSCORE=found /usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/lib/LINUXAMD64/libsscore_vcs201809.so through $NOVAS_HOME setting.
+267 FSDB Dumper for VCS, Release Verdi_O-2018.09-SP2, Linux x86_64/64bit, 02/21/2019
+268 (C) 1996 - 2019 by Synopsys, Inc.
+269 sps_call_fsdbDumpfile_main at 0 : ./rtl/__simulation_def.v(5)
+270 argv[0]: (NocInventer.fsdb)
+271 *Verdi* : Create FSDB file 'NocInventer.fsdb'
+272 compile option from '/home/cgra/newspace/NOC/spinal_noc/mesh_noc/simWorkspace/vcs/tb/NocInventer/NocInventer.daidir/vcs_rebuild'.
+273   "vcs '-full64' '-quiet' '-timescale=1ns/1ps' '-debug_access+all' '-debug_acc+pp+dmptf' '-debug_region=+cell+encrypt' '-l' 'vcs.log' '+vpi' '+vcs+initreg+random' '-load' '/home/cgra/newspace/NOC/spinal_noc/mesh_noc/./simWorkspace/.pluginsCachePath/vpi_vcs.so:entry_point_cb' '-o' 'NocInventer' '-P' '/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/novas.tab' '/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/pli.a' '-full64' '-LDFLAGS' '-Wl,--no-as-needed' '+fsdb+autoflush' 'NocInventer' '__simulation_def' "-Xrebuild" "-makedepends=Makefile.Msimdepends""
+274   "gmake -f Makefile.Msimdepends"
+275   "vcs '-full64' '-quiet' '-timescale=1ns/1ps' '-debug_access+all' '-debug_acc+pp+dmptf' '-debug_region=+cell+encrypt' '-l' 'vcs.log' '+vpi' '+vcs+initreg+random' '-load' '/home/cgra/newspace/NOC/spinal_noc/mesh_noc/./simWorkspace/.pluginsCachePath/vpi_vcs.so:entry_point_cb' '-o' 'NocInventer' '-P' '/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/novas.tab' '/usr/eda/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/pli.a' '-full64' '-LDFLAGS' '-Wl,--no-as-needed' '+fsdb+autoflush' 'NocInventer' '__simulation_def' 2>&1"
+276 FSDB_VCS_ENABLE_FAST_VC is enable
+277 sps_call_fsdbDumpvars_vd_main at 0 : ./rtl/__simulation_def.v(6)
+278 argv[0]: (0)
+279 argv[1]: (handle) NocInventer
+280 [spi_vcs_vd_ppi_create_root]: no upf option
+281 FSDB dumper cannot dump UPF related power signal ($power_tree): no ppiPowerNetwork.
+282 *Verdi* : Begin traversing the scope (NocInventer), layer (0).
+283 *Verdi* : End of traversing.
+284 pliAppHDL_DumpVarComplete traverse var: profile - 
+          CPU/Mem usage: 0.030 sys,  0.250 user,  277.85M mem
+                   incr: 0.000 sys,  0.000 user,  7.10M mem
+                   accu: 0.000 sys,  0.000 user,  7.10M mem
+              accu incr: 0.000 sys,  0.000 user,  7.10M mem
+
+          Count usage: 2 var,  2 idcode,  1 callback
+                 incr: 2 var,  2 idcode,  1 callback
+                 accu: 2 var,  2 idcode,  1 callback
+            accu incr: 2 var,  2 idcode,  1 callback
+285 Mon Oct 17 13:28:29 2022
+286 pliAppHDL_DumpVarComplete: profile - 
+          CPU/Mem usage: 0.030 sys,  0.250 user,  278.90M mem
+                   incr: 0.000 sys,  0.000 user,  1.05M mem
+                   accu: 0.000 sys,  0.000 user,  8.16M mem
+              accu incr: 0.000 sys,  0.000 user,  1.05M mem
+
+          Count usage: 2 var,  2 idcode,  1 callback
+                 incr: 0 var,  0 idcode,  0 callback
+                 accu: 2 var,  2 idcode,  1 callback
+            accu incr: 0 var,  0 idcode,  0 callback
+287 Mon Oct 17 13:28:29 2022
+288 sps_call_fsdbDumpflush_vd_main at 0 : ./rtl/__simulation_def.v(7)
+289 *Verdi* : Flush all FSDB Files at 0 ps.
+290 End of simulation at 10
+291 Mon Oct 17 13:28:29 2022
+292 Begin FSDB profile info:
+293 FSDB Writer : bc1(0) bcn(11) mtf/stf(0/1)
+FSDB Writer elapsed time : flush(0.006819) io wait(0.000000) theadpool wait(0.000000) target functin(0.000000)
+FSDB Writer cpu time : MT Compression : 0
+294 End FSDB profile info
+295 Parallel profile    -  Flush:4 Expand:0 ProduceWait:0 ConsumerWait:0 BlockUsed:0
+296                        ProduceTime:0.316869284 ConsumerTime:0.000000000 Buffer:64MB
+297 SimExit
+298 Sim process exit

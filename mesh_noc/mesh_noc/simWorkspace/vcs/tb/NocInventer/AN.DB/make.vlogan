@@ -1,0 +1,17 @@
+
+VLOGAN	= vlogan
+VLOGAN_OPT	= -l vlogan.log -full64 -sverilog +v2k -ntb -timescale=1ns/1ps -full64 -full64
+
+all :		_VCSgd_siaiFd_1.db \
+	_VCSgd_R0l8Sc_1.db \
+
+
+
+_VCSgd_siaiFd_1.db :	/home/cgra/newspace/NOC/spinal_noc/mesh_noc/tmp/job_1/NocInventer.v 
+		${VLOGAN}  ${VLOGAN_OPT} /home/cgra/newspace/NOC/spinal_noc/mesh_noc/tmp/job_1/NocInventer.v
+
+
+_VCSgd_R0l8Sc_1.db :	./rtl/__simulation_def.v 
+		${VLOGAN}  ${VLOGAN_OPT} ./rtl/__simulation_def.v
+
+
