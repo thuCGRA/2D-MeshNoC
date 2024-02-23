@@ -343,7 +343,7 @@ class streamFifo[T<:Data](dataType: HardType[T], fifoDepth: Int, var readyThenVa
       ptrWrite := ~ptrWrite
     }
     when(deq) {
-      ptrRead := ptrRead
+      ptrRead := ~ptrRead
     }
     empty := (empty & ~enq) | (~full & deq & ~enq)
 
@@ -694,7 +694,7 @@ class meshRouterDorDecoder(XYOrder: Int, xCordinateWidth: Int, yCordinateWidth: 
 
   val validStud = Vec(Bool(), dirNum)
   for(index <- 0 until dirNum) {
-    validStud(index) := io.validIn(index) & Bool(stubPort(index))
+    validStud(index) := io.validIn(index) & ~Bool(stubPort(index))
   }
 
   for(index <- 0 until dirNum){
@@ -820,7 +820,8 @@ class meshRouter(dataWidth: Int, XYOrder: Int, xCordinateWidth: Int, yCordinateW
   val validInStub = Vec(Bool(), dirNum)
   for (index <- 0 until dirNum) {
     readyInStub(index) := io.readyIn(index) | Bool(stubPort(index))
-    validInStub(index) := io.validIn(index) | Bool(stubPort(index))
+//    validInStub(index) := io.validIn(index) | Bool(stubPort(index))
+    validInStub(index) := io.validIn(index) & ~Bool(stubPort(index))
   }
 
   for(index <- 0 until dirNum){
@@ -849,15 +850,27 @@ class meshRouter(dataWidth: Int, XYOrder: Int, xCordinateWidth: Int, yCordinateW
 
   val grantDirEnIn = Vec(Bool, dirNum)
   val reqDirIn = Vec(Bits(dataDirNum(0) bits), Bits(dataDirNum(1) bits), Bits(dataDirNum(2) bits), Bits(dataDirNum(3) bits), Bits(dataDirNum(4) bits))
-  //val reqDirIn = mutable.LinkedHashMap[Int, Bits]()
-  val grantDirOut = Vec(Bits(dataDirNum(0) bits), Bits(dataDirNum(1) bits), Bits(dataDirNum(2) bits), Bits(dataDirNum(3) bits), Bits(dataDirNum(4) bits))
+//  val grantDirOut = Vec(Bits(dataDirNum(0) bits), Bits(dataDirNum(1) bits), Bits(dataDirNum(2) bits), Bits(dataDirNum(3) bits), Bits(dataDirNum(4) bits))
+  val grantDirOut = Bits(5 bits)
   val selDirOut = Vec(Bits(dataDirNum(0) bits), Bits(dataDirNum(1) bits), Bits(dataDirNum(2) bits), Bits(dataDirNum(3) bits), Bits(dataDirNum(4) bits))
   val validDirOut = Vec(Bool, dirNum)
   val yumDirIn = Vec(Bool, dirNum)
 
+  val myRRArbiter_P = new rrArbiter(inputNum = dataDirNum(0))
+  val myRRArbiter_W = new rrArbiter(inputNum = dataDirNum(1))
+  val myRRArbiter_E = new rrArbiter(inputNum = dataDirNum(2))
+  val myRRArbiter_N = new rrArbiter(inputNum = dataDirNum(3))
+  val myRRArbiter_S = new rrArbiter(inputNum = dataDirNum(4))
+
   // XY Dor-Routing
   if(XYOrder == 1){
     import NocInterface.NocDirection._
+    //     0 1 2 3 4
+    // P : p w e n s
+    // W : p e
+    // E : p w
+    // N : p w e s
+    // S : p w e n
     for(index <- P to S){
       grantDirEnIn(index) := readyInStub(index)
       yumDirIn(index) := validDirOut(index) & readyInStub(index)
@@ -865,38 +878,66 @@ class meshRouter(dataWidth: Int, XYOrder: Int, xCordinateWidth: Int, yCordinateW
       val dataDirIn = Vec(Bits(), dataDirNum(index))
       if(index == W){
         reqDirIn(index) := dirReq(E)(index) ## dirReq(P)(index)
-        dataDirIn := Vec(io.dataIn(E), io.dataIn(P))
+        dataDirIn := Vec(io.dataIn(P), io.dataIn(E))
+
+        myRRArbiter_W.io.reqsIn := reqDirIn(index)
+        myRRArbiter_W.io.grantsEnIn := grantDirEnIn(index)
+        myRRArbiter_W.io.yumIn := yumDirIn(index)
+        grantDirOut(index) := (myRRArbiter_E.io.grantsOut(1) | myRRArbiter_N.io.grantsOut(1) | myRRArbiter_S.io.grantsOut(1) | myRRArbiter_P.io.grantsOut(1))// E_gnt_w | N_gnt_w | S_gnt_w | P_gnt_w
+        selDirOut(index) := myRRArbiter_W.io.selOneHotOut(1) ## myRRArbiter_W.io.selOneHotOut(0) // E P
+        validDirOut(index) := myRRArbiter_W.io.validOut
       }
       else if (index == E) {
         reqDirIn(index) := dirReq(W)(index) ## dirReq(P)(index)
-        dataDirIn := Vec(io.dataIn(W), io.dataIn(P))
+        dataDirIn := Vec(io.dataIn(P), io.dataIn(W))
+
+        myRRArbiter_E.io.reqsIn := reqDirIn(index)
+        myRRArbiter_E.io.grantsEnIn := grantDirEnIn(index)
+        myRRArbiter_E.io.yumIn := yumDirIn(index)
+        grantDirOut(index) := (myRRArbiter_W.io.grantsOut(1) | myRRArbiter_N.io.grantsOut(2) | myRRArbiter_S.io.grantsOut(2) | myRRArbiter_P.io.grantsOut(2)) // W_gnt_e | N_gnt_e | S_gnt_e | P_gnt_e
+        selDirOut(index) := myRRArbiter_E.io.selOneHotOut(1) ## myRRArbiter_E.io.selOneHotOut(0) // W P
+        validDirOut(index) := myRRArbiter_E.io.validOut
       }
       else if (index == N) {
         reqDirIn(index) := dirReq(S)(index) ## dirReq(E)(index) ## dirReq(W)(index) ## dirReq(P)(index)
-        dataDirIn := Vec(io.dataIn(S), io.dataIn(E), io.dataIn(W), io.dataIn(P))
+        dataDirIn := Vec(io.dataIn(P), io.dataIn(W), io.dataIn(E), io.dataIn(S))
+
+        myRRArbiter_N.io.reqsIn := reqDirIn(index)
+        myRRArbiter_N.io.grantsEnIn := grantDirEnIn(index)
+        myRRArbiter_N.io.yumIn := yumDirIn(index)
+        grantDirOut(index) := (myRRArbiter_S.io.grantsOut(3) | myRRArbiter_P.io.grantsOut(N)) // S_gnt_n | P_gnt_n
+        selDirOut(index) := myRRArbiter_N.io.selOneHotOut(3) ## myRRArbiter_N.io.selOneHotOut(2) ## myRRArbiter_N.io.selOneHotOut(1) ## myRRArbiter_N.io.selOneHotOut(0) // S E W P
+        validDirOut(index) := myRRArbiter_N.io.validOut
       }
       else if (index == S) {
         reqDirIn(index) := dirReq(N)(index) ## dirReq(E)(index) ## dirReq(W)(index) ## dirReq(P)(index)
-        dataDirIn := Vec(io.dataIn(N), io.dataIn(E), io.dataIn(W), io.dataIn(P))
+        dataDirIn := Vec(io.dataIn(P), io.dataIn(W), io.dataIn(E), io.dataIn(N))
+
+        myRRArbiter_S.io.reqsIn := reqDirIn(index)
+        myRRArbiter_S.io.grantsEnIn := grantDirEnIn(index)
+        myRRArbiter_S.io.yumIn := yumDirIn(index)
+        grantDirOut(index) := (myRRArbiter_N.io.grantsOut(3) | myRRArbiter_P.io.grantsOut(S))// N_gnt_s | P_gnt_s
+        selDirOut(index) := myRRArbiter_S.io.selOneHotOut(3) ## myRRArbiter_S.io.selOneHotOut(2) ## myRRArbiter_S.io.selOneHotOut(1) ## myRRArbiter_S.io.selOneHotOut(0) // N E W P
+        validDirOut(index) := myRRArbiter_S.io.validOut
       }
       else if (index == P) {
         reqDirIn(index) := dirReq(S)(index) ## dirReq(N)(index) ## dirReq(E)(index) ## dirReq(W)(index) ## dirReq(P)(index)
-        dataDirIn := Vec(io.dataIn(S), io.dataIn(N), io.dataIn(E), io.dataIn(W), io.dataIn(P))
+        dataDirIn := Vec(io.dataIn(P), io.dataIn(W), io.dataIn(E), io.dataIn(N), io.dataIn(S))
+
+        myRRArbiter_P.io.reqsIn := reqDirIn(index)
+        myRRArbiter_P.io.grantsEnIn := grantDirEnIn(index)
+        myRRArbiter_P.io.yumIn := yumDirIn(index)
+        grantDirOut(index) := (myRRArbiter_E.io.grantsOut(P) | myRRArbiter_N.io.grantsOut(P) | myRRArbiter_S.io.grantsOut(P) | myRRArbiter_P.io.grantsOut(P) | myRRArbiter_W.io.grantsOut(P))
+        selDirOut(index) := myRRArbiter_P.io.selOneHotOut(S) ## myRRArbiter_P.io.selOneHotOut(N) ## myRRArbiter_P.io.selOneHotOut(E) ## myRRArbiter_P.io.selOneHotOut(W) ## myRRArbiter_P.io.selOneHotOut(P)
+        validDirOut(index) := myRRArbiter_P.io.validOut
       }
 
-      val myRRArbiter = new rrArbiter(inputNum = dataDirNum(index))
-      myRRArbiter.io.reqsIn := reqDirIn(index)
-      myRRArbiter.io.grantsEnIn := grantDirEnIn(index)
-      myRRArbiter.io.yumIn := yumDirIn(index)
-      grantDirOut(index) := myRRArbiter.io.grantsOut
-      selDirOut(index) := myRRArbiter.io.selOneHotOut
-      validDirOut(index) := myRRArbiter.io.validOut
 
       val myMuxOneHot = new muxOneHot(dataNum = dataDirNum(index), dataWidth = dataWidth)
       myMuxOneHot.io.dataIn := dataDirIn
       myMuxOneHot.io.selOneHot := selDirOut(index)
       io.dataOut(index) := myMuxOneHot.io.dataOut
-      io.yumiOut(index) := grantDirOut(index).orR
+      io.yumiOut(index) := grantDirOut(index)
       io.validOut(index) := validDirOut(index)
     }
   }
@@ -908,47 +949,81 @@ class meshRouter(dataWidth: Int, XYOrder: Int, xCordinateWidth: Int, yCordinateW
       yumDirIn(index) := validDirOut(index) & readyInStub(index)
 
       val dataDirIn = Vec(Bits(), dataDirNum(index))
+      //     0 1 2 3 4
+      // P : p w e n s
+      // W : p e n s
+      // E : p w n s
+      // N : p s
+      // S : p n
+
       if (index == W) {
         reqDirIn(index) := dirReq(S)(index) ## dirReq(N)(index) ## dirReq(E)(index) ## dirReq(P)(index)
-        dataDirIn := Vec(io.dataIn(S), io.dataIn(N), io.dataIn(E), io.dataIn(P))
+        dataDirIn := Vec(io.dataIn(P), io.dataIn(E), io.dataIn(N), io.dataIn(S))
+
+        myRRArbiter_W.io.reqsIn := reqDirIn(index)
+        myRRArbiter_W.io.grantsEnIn := grantDirEnIn(index)
+        myRRArbiter_W.io.yumIn := yumDirIn(index)
+        grantDirOut(index) := (myRRArbiter_E.io.grantsOut(1) | myRRArbiter_P.io.grantsOut(1)) // E_gnt_w | P_gnt_w
+        selDirOut(index) := myRRArbiter_W.io.selOneHotOut(3) ## myRRArbiter_W.io.selOneHotOut(2) ## myRRArbiter_W.io.selOneHotOut(1) ## myRRArbiter_W.io.selOneHotOut(0)// p e n s
+        validDirOut(index) := myRRArbiter_W.io.validOut
       }
       else if (index == E) {
         reqDirIn(index) := dirReq(S)(index) ## dirReq(N)(index) ## dirReq(W)(index) ## dirReq(P)(index)
-        dataDirIn := Vec(io.dataIn(S), io.dataIn(N), io.dataIn(W), io.dataIn(P))
+        dataDirIn := Vec(io.dataIn(P), io.dataIn(W), io.dataIn(N), io.dataIn(S))
+
+        myRRArbiter_E.io.reqsIn := reqDirIn(index)
+        myRRArbiter_E.io.grantsEnIn := grantDirEnIn(index)
+        myRRArbiter_E.io.yumIn := yumDirIn(index)
+        grantDirOut(index) := (myRRArbiter_W.io.grantsOut(1) | myRRArbiter_P.io.grantsOut(2)) // W_gnt_e | P_gnt_e
+        selDirOut(index) := myRRArbiter_E.io.selOneHotOut(3) ## myRRArbiter_E.io.selOneHotOut(2) ## myRRArbiter_E.io.selOneHotOut(1) ## myRRArbiter_E.io.selOneHotOut(0) // p w n s
+        validDirOut(index) := myRRArbiter_E.io.validOut
       }
       else if (index == N) {
         reqDirIn(index) := dirReq(S)(index) ## dirReq(P)(index)
-        dataDirIn := Vec(io.dataIn(S), io.dataIn(P))
+        dataDirIn := Vec(io.dataIn(P), io.dataIn(S))
+
+        myRRArbiter_N.io.reqsIn := reqDirIn(index)
+        myRRArbiter_N.io.grantsEnIn := grantDirEnIn(index)
+        myRRArbiter_N.io.yumIn := yumDirIn(index)
+        grantDirOut(index) := (myRRArbiter_S.io.grantsOut(1) | myRRArbiter_W.io.grantsOut(2) | myRRArbiter_E.io.grantsOut(2) | myRRArbiter_P.io.grantsOut(3)) // S_gnt_n | W_gnt_n | E_gnt_n | P_gnt_n
+        selDirOut(index) := myRRArbiter_N.io.selOneHotOut(1) ## myRRArbiter_N.io.selOneHotOut(0) // p s
+        validDirOut(index) := myRRArbiter_N.io.validOut
       }
       else if (index == S) {
         reqDirIn(index) := dirReq(N)(index) ## dirReq(P)(index)
-        dataDirIn := Vec(io.dataIn(N), io.dataIn(P))
+        dataDirIn := Vec(io.dataIn(P), io.dataIn(N))
+
+        myRRArbiter_S.io.reqsIn := reqDirIn(index)
+        myRRArbiter_S.io.grantsEnIn := grantDirEnIn(index)
+        myRRArbiter_S.io.yumIn := yumDirIn(index)
+        grantDirOut(index) := (myRRArbiter_N.io.grantsOut(1) | myRRArbiter_W.io.grantsOut(3) | myRRArbiter_E.io.grantsOut(3) | myRRArbiter_P.io.grantsOut(4)) // N_gnt_s | W_gnt_s | E_gnt_s | P_gnt_s
+        selDirOut(index) := myRRArbiter_S.io.selOneHotOut(1) ## myRRArbiter_S.io.selOneHotOut(0) // p n
+        validDirOut(index) := myRRArbiter_S.io.validOut
       }
       else if (index == P) {
         reqDirIn(index) := dirReq(S)(index) ## dirReq(N)(index) ## dirReq(E)(index) ## dirReq(W)(index) ## dirReq(P)(index)
-        dataDirIn := Vec(io.dataIn(S), io.dataIn(N), io.dataIn(E), io.dataIn(W), io.dataIn(P))
-      }
+        dataDirIn := Vec(io.dataIn(P), io.dataIn(W), io.dataIn(E), io.dataIn(N), io.dataIn(S))
 
-      val myRRArbiter = new rrArbiter(inputNum = dataDirNum(index))
-      myRRArbiter.io.reqsIn := reqDirIn(index)
-      myRRArbiter.io.grantsEnIn := grantDirEnIn(index)
-      myRRArbiter.io.yumIn := yumDirIn(index)
-      grantDirOut(index) := myRRArbiter.io.grantsOut
-      selDirOut(index) := myRRArbiter.io.selOneHotOut
-      validDirOut(index) := myRRArbiter.io.validOut
+        myRRArbiter_P.io.reqsIn := reqDirIn(index)
+        myRRArbiter_P.io.grantsEnIn := grantDirEnIn(index)
+        myRRArbiter_P.io.yumIn := yumDirIn(index)
+        grantDirOut(index) := (myRRArbiter_E.io.grantsOut(P) | myRRArbiter_N.io.grantsOut(P) | myRRArbiter_S.io.grantsOut(P) | myRRArbiter_P.io.grantsOut(P) | myRRArbiter_W.io.grantsOut(P))
+        selDirOut(index) := myRRArbiter_P.io.selOneHotOut(S) ## myRRArbiter_P.io.selOneHotOut(N) ## myRRArbiter_P.io.selOneHotOut(E) ## myRRArbiter_P.io.selOneHotOut(W) ## myRRArbiter_P.io.selOneHotOut(P)
+        validDirOut(index) := myRRArbiter_P.io.validOut
+      }
 
       val myMuxOneHot = new muxOneHot(dataNum = dataDirNum(index), dataWidth = dataWidth)
       myMuxOneHot.io.dataIn := dataDirIn
       myMuxOneHot.io.selOneHot := selDirOut(index)
       io.dataOut(index) := myMuxOneHot.io.dataOut
-      io.yumiOut(index) := grantDirOut(index).orR
+      io.yumiOut(index) := grantDirOut(index)
       io.validOut(index) := validDirOut(index)
     }
   }
 }
 
 case class bufferMeshRouterConfig(var dataWidth: Int = 32,
-                                  var XYOrder: Int = 0,
+                                  var XYOrder: Int = 1,
                                   var xCordinateWidth: Int = 2,
                                   var yCordinateWidth: Int = 2,
                                   var dirNum: Int = 5,
@@ -1123,7 +1198,7 @@ class meshNode(config: meshNodeConfig) extends Component{
       mymeshRouter.io.linkIn := linkIn
       linkOut := mymeshRouter.io.linkOut
 
-    }else{
+    }else{ // package rev
       val linkIn = Vec(readyAndLink(myrevLinkConfig.revLinkDataWidth), config.dirNum + 1)
       val linkOut = Vec(readyAndLink(myrevLinkConfig.revLinkDataWidth), config.dirNum + 1)
 
@@ -1133,7 +1208,7 @@ class meshNode(config: meshNodeConfig) extends Component{
       }
 
       val mybufferMeshRouterConfig = bufferMeshRouterConfig(dataWidth = myrevLinkConfig.revLinkDataWidth,
-                                                            XYOrder = 1,
+                                                            XYOrder = 0,
                                                             xCordinateWidth = config.xCordinateWidth,
                                                             yCordinateWidth = config.yCordinateWidth,
                                                             stubPort = ListBuffer(false) ++ config.stubPort ,
@@ -1476,9 +1551,7 @@ class meshEndpointStandard(config: meshEndpointStandardConfig) extends Component
 
   val tempoutPacketIn = Bits (io.mymeshLinkConfig.meshFwdLinkConfig.fwdLinkDataWidth bits)
 
-  tempoutPacketIn := io.outMyYCord ## io.outMyXCord ## io.outSrcYCord ## io.outSrcXCord ##
-                      io.outPayLoadDataIn ## io.outAddr ## io.outOpEx ##  io.outOp
-
+  tempoutPacketIn := io.outAddr ## io.outOp ## io.outOpEx ## io.outPayLoadDataIn ## io.outMyYCord ## io.outMyXCord ## io.outSrcYCord ## io.outSrcXCord
 
   val returnedCredit = Bool()
   returnedCredit := tempReturnedCredit & tempReturnedYumi
@@ -1497,22 +1570,14 @@ class meshEndpointStandard(config: meshEndpointStandardConfig) extends Component
   io.linkOut := myEndpoint.io.linkOut
   myEndpoint.io.fifoDataYumIn := tempPacketYumi
 
-  tempPacketData.op := myEndpoint.io.fifoDataOut(0, ePacketOp.packetOpTypeWidth bits)
-  tempPacketData.opEx := myEndpoint.io.fifoDataOut(ePacketOp.packetOpTypeWidth, mymeshPacketConfig.opExWidth bits)
-  tempPacketData.addr := myEndpoint.io.fifoDataOut(ePacketOp.packetOpTypeWidth+mymeshPacketConfig.opExWidth,
-    mymeshPacketConfig.addrWidth bits)
-  tempPacketData.payload.data := myEndpoint.io.fifoDataOut(ePacketOp.packetOpTypeWidth + mymeshPacketConfig.opExWidth+
-    mymeshPacketConfig.addrWidth, mymeshPacketConfig.dataWidth bits)
-  tempPacketData.srcXCord := myEndpoint.io.fifoDataOut(ePacketOp.packetOpTypeWidth + mymeshPacketConfig.opExWidth +
-    mymeshPacketConfig.addrWidth+mymeshPacketConfig.dataWidth, mymeshPacketConfig.xCordWidth bits)
-  tempPacketData.srcYCord := myEndpoint.io.fifoDataOut(ePacketOp.packetOpTypeWidth + mymeshPacketConfig.opExWidth +
-    mymeshPacketConfig.addrWidth + mymeshPacketConfig.dataWidth+mymeshPacketConfig.xCordWidth, mymeshPacketConfig.yCordWidth bits)
-  tempPacketData.myXCord := myEndpoint.io.fifoDataOut(ePacketOp.packetOpTypeWidth + mymeshPacketConfig.opExWidth +
-    mymeshPacketConfig.addrWidth + mymeshPacketConfig.dataWidth + mymeshPacketConfig.xCordWidth+mymeshPacketConfig.yCordWidth,
-    mymeshPacketConfig.xCordWidth bits)
-  tempPacketData.myYCord := myEndpoint.io.fifoDataOut(ePacketOp.packetOpTypeWidth + mymeshPacketConfig.opExWidth +
-    mymeshPacketConfig.addrWidth + mymeshPacketConfig.dataWidth + mymeshPacketConfig.xCordWidth*2 + mymeshPacketConfig.yCordWidth,
-    mymeshPacketConfig.yCordWidth bits)
+  tempPacketData.srcXCord := myEndpoint.io.fifoDataOut(0, mymeshPacketConfig.xCordWidth bits)
+  tempPacketData.srcYCord := myEndpoint.io.fifoDataOut(mymeshPacketConfig.xCordWidth, mymeshPacketConfig.yCordWidth bits)
+  tempPacketData.myXCord := myEndpoint.io.fifoDataOut(mymeshPacketConfig.xCordWidth+mymeshPacketConfig.yCordWidth, mymeshPacketConfig.xCordWidth bits)
+  tempPacketData.myYCord := myEndpoint.io.fifoDataOut(mymeshPacketConfig.xCordWidth+mymeshPacketConfig.yCordWidth+mymeshPacketConfig.xCordWidth, mymeshPacketConfig.yCordWidth bits)
+  tempPacketData.payload.data := myEndpoint.io.fifoDataOut(2*mymeshPacketConfig.xCordWidth+2*mymeshPacketConfig.yCordWidth, mymeshPacketConfig.dataWidth bits)
+  tempPacketData.opEx := myEndpoint.io.fifoDataOut(2*mymeshPacketConfig.xCordWidth+2*mymeshPacketConfig.yCordWidth+mymeshPacketConfig.dataWidth, mymeshPacketConfig.opExWidth bits)
+  tempPacketData.op := myEndpoint.io.fifoDataOut(2*mymeshPacketConfig.xCordWidth+2*mymeshPacketConfig.yCordWidth+mymeshPacketConfig.dataWidth+mymeshPacketConfig.opExWidth, ePacketOp.packetOpTypeWidth bits)
+  tempPacketData.addr := myEndpoint.io.fifoDataOut(2*mymeshPacketConfig.xCordWidth+2*mymeshPacketConfig.yCordWidth+mymeshPacketConfig.dataWidth+mymeshPacketConfig.opExWidth+ePacketOp.packetOpTypeWidth, mymeshPacketConfig.addrWidth bits)
 
   tempPacketDataValid := myEndpoint.io.fifoDataValidOut
   tempPacketFifoFull := myEndpoint.io.fifoDataFull
@@ -1521,14 +1586,11 @@ class meshEndpointStandard(config: meshEndpointStandardConfig) extends Component
   io.outPacketReadyOut := myEndpoint.io.outPacketReadyOut
   myEndpoint.io.returnedYumIn := tempReturnedYumi
 
-  tempReturnedPacket.pktTyple := myEndpoint.io.returnedPacketOut(0, ePacketType.packetTypeWidth bits)
-  tempReturnedPacket.data := myEndpoint.io.returnedPacketOut(ePacketType.packetTypeWidth, mymeshReturnedPacketConfig.dataWidth bits)
-  tempReturnedPacket.xCord := myEndpoint.io.returnedPacketOut(ePacketType.packetTypeWidth + mymeshReturnedPacketConfig.dataWidth,
-    mymeshReturnedPacketConfig.xCordWidth bits)
-  tempReturnedPacket.yCord := myEndpoint.io.returnedPacketOut(ePacketType.packetTypeWidth + mymeshReturnedPacketConfig.dataWidth +
-    mymeshReturnedPacketConfig.xCordWidth, mymeshReturnedPacketConfig.yCordWidth bits)
-  tempReturnedPacket.loadId := myEndpoint.io.returnedPacketOut(ePacketType.packetTypeWidth + mymeshReturnedPacketConfig.dataWidth +
-    mymeshReturnedPacketConfig.xCordWidth + mymeshReturnedPacketConfig.yCordWidth, mymeshReturnedPacketConfig.loadIdWidth bits)
+  tempReturnedPacket.xCord := myEndpoint.io.returnedPacketOut(0, mymeshReturnedPacketConfig.xCordWidth bits)
+  tempReturnedPacket.yCord := myEndpoint.io.returnedPacketOut(mymeshReturnedPacketConfig.xCordWidth, mymeshReturnedPacketConfig.yCordWidth bits)
+  tempReturnedPacket.loadId := myEndpoint.io.returnedPacketOut(mymeshReturnedPacketConfig.xCordWidth + mymeshReturnedPacketConfig.yCordWidth, mymeshReturnedPacketConfig.loadIdWidth bits)
+  tempReturnedPacket.data := myEndpoint.io.returnedPacketOut(mymeshReturnedPacketConfig.loadIdWidth + mymeshReturnedPacketConfig.xCordWidth + mymeshReturnedPacketConfig.yCordWidth, mymeshReturnedPacketConfig.dataWidth bits)
+  tempReturnedPacket.pktTyple := myEndpoint.io.returnedPacketOut(mymeshReturnedPacketConfig.loadIdWidth + mymeshReturnedPacketConfig.xCordWidth + mymeshReturnedPacketConfig.yCordWidth + mymeshReturnedPacketConfig.dataWidth, ePacketType.packetTypeWidth bits)
 
   tempReturnedCredit := myEndpoint.io.returnedCreditOut
   io.returnedFifoFullout := myEndpoint.io.returnedFifoFull
@@ -1602,10 +1664,12 @@ class meshEndpointStandard(config: meshEndpointStandardConfig) extends Component
 
   tempPacketYumi := tempyumiOut & (rcFifoReadyOut & tempReturningPacketReady)
   tempvalidIn := tempPacketDataValid & (rcFifoReadyOut & tempReturningPacketReady)
-  returningDataRequest := tempRemoteStroe | tempRemoteLoad
+
+  returningDataRequest := tempRemoteLoad | tempswapAqIn
   rcFifoli.packetType := (returningDataRequest ? B(ePacketType.packetTypeData) | B(ePacketType.packetTypeCredit))
-  rcFifoli.xCordinate := tempPacketData.srcXCord
-  rcFifoli.yCordinate := tempPacketData.srcYCord
+
+  rcFifoli.xCordinate := tempPacketData.myXCord
+  rcFifoli.yCordinate := tempPacketData.myYCord
   rcFifoli.loadId :=  tempPacketData.payload.loadId
 
   val myreturnCreditFifo = new streamFifo(Bits(rcFifoli.getWidth() bits), fifoDepth = 2)
@@ -1613,10 +1677,11 @@ class meshEndpointStandard(config: meshEndpointStandardConfig) extends Component
   myreturnCreditFifo.io.validIn := tempPacketYumi
   rcFifoReadyOut := myreturnCreditFifo.io.readyOut
   myreturnCreditFifo.io.yumiIn := rcFifoYumiIn
-  rcFifoValidOut := myreturnCreditFifo.io.validIn
+
+  rcFifoValidOut := myreturnCreditFifo.io.validOut
   rcFifolo.packetType := myreturnCreditFifo.io.dataOut(0, ePacketType.packetTypeWidth bits)
   rcFifolo.xCordinate := myreturnCreditFifo.io.dataOut(ePacketType.packetTypeWidth, myreturningCreditConfig.xCordWidth bits)
-  rcFifolo.yCordinate := myreturnCreditFifo.io.dataOut(ePacketType.packetTypeWidth+myreturningCreditConfig.xCordWidth, myreturningCreditConfig.yCordWidth bits)
+  rcFifolo.yCordinate := myreturnCreditFifo.io.dataOut(ePacketType.packetTypeWidth + myreturningCreditConfig.xCordWidth, myreturningCreditConfig.yCordWidth bits)
   rcFifolo.loadId := myreturnCreditFifo.io.dataOut(ePacketType.packetTypeWidth+myreturningCreditConfig.xCordWidth+myreturningCreditConfig.yCordWidth,  myreturningCreditConfig.loadIdWidth bits)
 
   //need a 1cycle hold
@@ -1640,9 +1705,8 @@ class meshEndpointStandard(config: meshEndpointStandardConfig) extends Component
   returningPacketCase.xCord := rcFifolo.xCordinate
   returningPacketCase.yCord := rcFifolo.yCordinate
   returningPacketCase.loadId := rcFifolo.loadId
-  tempReturningPacket := returningPacketCase.loadId ## returningPacketCase.yCord ##
-                          returningPacketCase.xCord ## returningPacketCase.data ## returningPacketCase.pktTyple
 
+  tempReturningPacket := returningPacketCase.pktTyple ## returningPacketCase.data ## returningPacketCase.loadId ## returningPacketCase.yCord ## returningPacketCase.xCord
   // handle returned credit and data
   val launchOut = io.outPacketValidIn & io.outPacketReadyOut
   val mycounterUpDown = new counterUpDown(maxValue = config.maxCredit, maxStep = 1, initValue = config.maxCredit)
@@ -1713,7 +1777,6 @@ class meshLinkTieoff(config: meshLinkTieoffConfig) extends Component{
   linkOutCast.revlink.revPacket.readyAndRev := True
 
 }
-
 
 case class meshNetworkConfig(var addrWidth: Int = 32,
                              var dataWidth: Int = 32,
@@ -1815,9 +1878,329 @@ class meshNetwork(config: meshNetworkConfig) extends Component {
   }
 }
 
+// mesh master example
+class meshMasterExample(config: meshEndpointStandardConfig) extends Component {
+  import NocInterface._
+  val io = new Bundle {
+    val mymeshLinkConfig = meshLinkConfig(addrWidth = config.addrWidth,
+      dataWidth = config.dataWidth,
+      xCordWidth = config.xCordinateWidth,
+      yCordWidth = config.yCordinateWidth,
+      loadIdWidth = config.loadIdWidth
+    )
+
+    //mesh network links
+    val linkIn = in(meshLink(mymeshLinkConfig))
+    val linkOut = out(meshLink(mymeshLinkConfig))
+
+    //tile cordinates in network
+    val myXCordinate = in Bits (config.xCordinateWidth bits)
+    val myYCordinate = in Bits (config.yCordinateWidth bits)
+
+  }
+
+  val endpoint = new meshEndpointStandard(config)
+
+  //1-1. in request from network to local
+  val validOut = Bool()
+  val yumiIn = Bool()
+  val dataOut = Bits (config.dataWidth bits)
+  val maskOut = Bits (config.dataWidth >> 3 bits)
+  val addrOut = UInt (config.addrWidth bits)
+  val weOut = Bool()
+  val xCordinateOut = Bits (config.xCordinateWidth bits)
+  val yCordinateOut = Bits (config.yCordinateWidth bits)
+
+  //1-2. out response to network from local
+  val returningDataIn = Bits (config.dataWidth bits)
+  val returningValidIn = Bool()
+
+  //2-1. out request to network from local
+  val outOp = Bits (ePacketOp.packetOpTypeWidth bits)
+  val outOpEx = Bits (config.dataWidth >> 3 bits)
+  val outAddr = Bits (config.addrWidth bits)
+  val outPayLoadDataIn = Bits (config.dataWidth bits)
+  val outSrcXCord = Bits (config.xCordinateWidth bits)
+  val outSrcYCord = Bits (config.yCordinateWidth bits)
+  val outMyXCord = Bits (config.xCordinateWidth bits)
+  val outMyYCord = Bits (config.yCordinateWidth bits)
+  val outPacketValidIn = Bool()
+  val outPacketReadyOut = Bool()
+
+  // 2-2. in response from network to local
+  val returnedDataOut = Bits (config.dataWidth bits)
+  val returnedLoadIdOut = Bits (config.loadIdWidth bits)
+  val returnedValidOut = Bool()
+  val returnedYumIn = Bool()
+  val returnedFifoFullout = Bool()
+  val creditOut = UInt (log2Up(config.maxCredit + 1) bits)
+
+  // state machine
+  object eStat extends SpinalEnum(binarySequential) {
+    val eWriting, eReading, eWaiting, eFinish = newElement()
+  }
+  val stat_r = Reg(eStat()) init(eStat.eWriting)
+  val stat_n = eStat()
+  val wait_counter_r = Reg(UInt(config.addrWidth bits)) init(0)
+  val data_r = Reg(UInt(config.dataWidth bits)) init(0)
+  val addr_r = Reg(UInt(config.addrWidth bits)) init(0)
+
+  val addr_overflow = (addr_r===U(31)) && outPacketReadyOut
+  val wait_overflow = (wait_counter_r===U(31)) && outPacketReadyOut
+
+  switch(stat_r, coverUnreachable = true){
+    is(eStat.eWriting){
+      stat_n := addr_overflow ? eStat.eReading | eStat.eWriting
+    }
+    is(eStat.eReading){
+      stat_n := addr_overflow ? eStat.eWaiting | eStat.eReading
+    }
+    is(eStat.eWaiting) {
+      stat_n := wait_overflow ? eStat.eFinish | eStat.eWaiting
+    }
+    default{
+      stat_n := eStat.eFinish
+    }
+  }
+
+  stat_r := stat_n
+
+  outOp := (stat_r===eStat.eWriting) ? B(ePacketOp.remoteStore, ePacketOp.packetOpTypeWidth bits) | B(ePacketOp.remoteLoad, ePacketOp.packetOpTypeWidth bits)
+  outPacketValidIn := (stat_r===eStat.eWriting) || (stat_r===eStat.eReading)
+  outAddr := addr_r.asBits
+  outOpEx := B(1)
+  outPayLoadDataIn := data_r.asBits
+  outMyXCord := io.myXCordinate
+  outMyYCord := io.myYCordinate
+  outSrcXCord := B(1)
+  outSrcYCord := B(1)
+  val launch_packet = outPacketValidIn && outPacketReadyOut
+  val incr_data = launch_packet && (stat_r===eStat.eWriting)
+  val incr_addr = launch_packet
+
+  when(incr_data){
+    data_r := data_r + 1
+  }
+
+  val addr_n = ((stat_r === eStat.eWriting)  && (stat_n === eStat.eReading)) ? U(0, config.addrWidth bits) | addr_r + 1
+  when(incr_addr){
+    addr_r := addr_n
+  }
+
+  when(returnedValidOut){
+    wait_counter_r := wait_counter_r + 1
+  }
+
+  val cycle_counter_r = Reg(UInt(32 bits)) init(0)
+  when((stat_r === eStat.eWriting)){
+    cycle_counter_r := 0
+  }.otherwise{
+    cycle_counter_r := cycle_counter_r + 1
+  }
+
+  when(returnedValidOut){
+    report(L"cycle $cycle_counter_r ,returned=$returnedDataOut , expected=$wait_counter_r")
+  }
+
+  //connect
+  endpoint.io.linkIn := io.linkIn
+  io.linkOut := endpoint.io.linkOut
+  // 1-1
+  endpoint.io.yumiIn := False
+  // 1-2
+  endpoint.io.returningDataIn := B(0)
+  endpoint.io.returningValidIn := False
+  // 2-1
+  endpoint.io.outOp := outOp
+  endpoint.io.outOpEx := outOpEx
+  endpoint.io.outAddr := outAddr
+  endpoint.io.outPayLoadDataIn := outPayLoadDataIn
+  endpoint.io.outSrcXCord := outSrcXCord
+  endpoint.io.outSrcYCord := outSrcYCord
+  endpoint.io.outMyXCord := outMyXCord
+  endpoint.io.outMyYCord := outMyYCord
+  endpoint.io.outPacketValidIn := outPacketValidIn
+  outPacketReadyOut := endpoint.io.outPacketReadyOut
+  // 2-2
+  returnedDataOut := endpoint.io.returnedDataOut
+  returnedLoadIdOut := endpoint.io.returnedLoadIdOut
+  returnedValidOut := endpoint.io.returnedValidOut
+  endpoint.io.returnedYumIn := returnedValidOut
+  endpoint.io.myXCordinate := io.myXCordinate
+  endpoint.io.myYCordinate := io.myYCordinate
+}
+
+// mesh slave example
+class meshSlaveExample(config: meshEndpointStandardConfig) extends Component {
+  import NocInterface._
+  val io = new Bundle {
+    val mymeshLinkConfig = meshLinkConfig(addrWidth = config.addrWidth,
+      dataWidth = config.dataWidth,
+      xCordWidth = config.xCordinateWidth,
+      yCordWidth = config.yCordinateWidth,
+      loadIdWidth = config.loadIdWidth
+    )
+
+    //mesh network links
+    val linkIn = in(meshLink(mymeshLinkConfig))
+    val linkOut = out(meshLink(mymeshLinkConfig))
+
+    //tile cordinates in network
+    val myXCordinate = in Bits (config.xCordinateWidth bits)
+    val myYCordinate = in Bits (config.yCordinateWidth bits)
+
+  }
+
+  val endpoint = new meshEndpointStandard(config)
+
+  //1-1. in request from network to local
+  val validOut = Bool()
+  val yumiIn = Bool()
+  val dataOut = Bits (config.dataWidth bits)
+  val maskOut = Bits (config.dataWidth >> 3 bits)
+  val addrOut = UInt (config.addrWidth bits)
+  val weOut = Bool()
+  val xCordinateOut = Bits (config.xCordinateWidth bits)
+  val yCordinateOut = Bits (config.yCordinateWidth bits)
+
+  //1-2. out response to network from local
+  val returningDataIn = Reg(Bits (config.dataWidth bits)) init(1)
+  val returningValidIn = Reg(Bool()) init(False)
+
+  //2-1. out request to network from local
+  val outOp = Bits (ePacketOp.packetOpTypeWidth bits)
+  val outOpEx = Bits (config.dataWidth >> 3 bits)
+  val outAddr = Bits (config.addrWidth bits)
+  val outPayLoadDataIn = Bits (config.dataWidth bits)
+  val outSrcXCord = Bits (config.xCordinateWidth bits)
+  val outSrcYCord = Bits (config.yCordinateWidth bits)
+  val outMyXCord = Bits (config.xCordinateWidth bits)
+  val outMyYCord = Bits (config.yCordinateWidth bits)
+  val outPacketValidIn = Bool()
+  val outPacketReadyOut = Bool()
+
+  // 2-2. in response from network to local
+  val returnedDataOut = Bits (config.dataWidth bits)
+  val returnedLoadIdOut = Bits (config.loadIdWidth bits)
+  val returnedValidOut = Bool()
+  val returnedYumIn = Bool()
+  val returnedFifoFullout = Bool()
+  val creditOut = UInt (log2Up(config.maxCredit + 1) bits)
+
+  // slave mem
+  var mem_depth_lp = 32
+  val mem = Vec((Reg(Bits(config.dataWidth bits)) init(0)), mem_depth_lp)
+  when(weOut && validOut){
+    mem(addrOut(4 downto 0)) := dataOut
+  }
+
+  when(!weOut && validOut){
+    returningDataIn := mem(addrOut(4 downto 0))
+  }
+  yumiIn := validOut
+  returningValidIn := yumiIn
+
+  //connect
+  endpoint.io.linkIn := io.linkIn
+  io.linkOut := endpoint.io.linkOut
+  // 1-1
+  validOut := endpoint.io.validOut
+  endpoint.io.yumiIn := yumiIn
+  dataOut := endpoint.io.dataOut
+  maskOut := endpoint.io.maskOut
+  addrOut := endpoint.io.addrOut
+  weOut := endpoint.io.weOut
+  // 1-2
+  endpoint.io.returningDataIn := returningDataIn
+  endpoint.io.returningValidIn := returningValidIn
+
+  // 2-1
+  outOp := B(0)
+  outOpEx := B(0)
+  outAddr := B(0)
+  outPayLoadDataIn := B(0)
+  outSrcXCord := B(0)
+  outSrcYCord := B(0)
+  outMyXCord := B(0)
+  outMyYCord := B(0)
+  outPacketValidIn := False
+
+  endpoint.io.outOp := outOp
+  endpoint.io.outOpEx := outOpEx
+  endpoint.io.outAddr := outAddr
+  endpoint.io.outPayLoadDataIn := outPayLoadDataIn
+  endpoint.io.outSrcXCord := outSrcXCord
+  endpoint.io.outSrcYCord := outSrcYCord
+  endpoint.io.outMyXCord := outMyXCord
+  endpoint.io.outMyYCord := outMyYCord
+  endpoint.io.outPacketValidIn := outPacketValidIn
+  outPacketReadyOut := endpoint.io.outPacketReadyOut
+  // 2-2
+
+  returnedDataOut := endpoint.io.returnedDataOut
+  returnedLoadIdOut := endpoint.io.returnedLoadIdOut
+  returnedValidOut := endpoint.io.returnedValidOut
+  endpoint.io.returnedYumIn := returnedValidOut
+  endpoint.io.myXCordinate := io.myXCordinate
+  endpoint.io.myYCordinate := io.myYCordinate
+}
+
+class meshNocTop(config: meshNetworkConfig, endpointConfig: meshEndpointStandardConfig, TieoffConfig: meshLinkTieoffConfig) extends Component {
+  import NocInterface._
+  val io = new Bundle {
+    val mymeshLinkConfig = meshLinkConfig(addrWidth = config.addrWidth,
+      dataWidth = config.dataWidth,
+      xCordWidth = config.xCordinateWidth,
+      yCordWidth = config.yCordinateWidth,
+      loadIdWidth = config.loadIdWidth
+    )
+  }
+  noIoPrefix()
+
+  val mesh_network = new meshNetwork(config)
+  val mesh_master = new meshMasterExample(endpointConfig)
+  val mesh_slave = new meshSlaveExample(endpointConfig)
+  val mesh_tieoff_y = Array.fill(config.yCordinateWidth*2)(new meshLinkTieoff(TieoffConfig))
+  val mesh_tieoff_x = Array.fill(config.xCordinateWidth*2)(new meshLinkTieoff(TieoffConfig))
+  val mesh_tieoff_node = Array.fill(2)(new meshLinkTieoff(TieoffConfig))
+
+  // connect
+  for(y <- 0 until config.yCordinateWidth){
+    // W
+    mesh_tieoff_y(2*y).io.linkIn := mesh_network.io.westLinkOut(y)
+    mesh_network.io.westLinkIn(y) :=mesh_tieoff_y(2*y).io.linkOut
+    // E
+    mesh_tieoff_y(2 * y+1).io.linkIn := mesh_network.io.eastLinkOut(y)
+    mesh_network.io.eastLinkIn(y) := mesh_tieoff_y(2 * y+1).io.linkOut
+  }
+  for (x <- 0 until config.xCordinateWidth) {
+    // N
+    mesh_tieoff_x(2 * x).io.linkIn := mesh_network.io.northLinkOut(x)
+    mesh_network.io.northLinkIn(x) := mesh_tieoff_x(2 * x).io.linkOut
+    // S
+    mesh_tieoff_x(2 * x + 1).io.linkIn := mesh_network.io.southLinkOut(x)
+    mesh_network.io.southLinkIn(x) := mesh_tieoff_x(2 * x + 1).io.linkOut
+  }
+
+  mesh_network.io.localLinkIn(0)(1) := mesh_tieoff_node(0).io.linkOut
+  mesh_tieoff_node(0).io.linkIn := mesh_network.io.localLinkOut(0)(1)
+
+  mesh_network.io.localLinkIn(1)(0) := mesh_tieoff_node(1).io.linkOut
+  mesh_tieoff_node(1).io.linkIn := mesh_network.io.localLinkOut(1)(0)
+
+  // master at (0, 0)
+  mesh_network.io.localLinkIn(0)(0) := mesh_master.io.linkOut
+  mesh_master.io.linkIn := mesh_network.io.localLinkOut(0)(0)
+  mesh_master.io.myXCordinate := B(0)
+  mesh_master.io.myYCordinate := B(0)
+  // slave at (1, 1)
+  mesh_network.io.localLinkIn(1)(1) := mesh_slave.io.linkOut
+  mesh_slave.io.linkIn := mesh_network.io.localLinkOut(1)(1)
+  mesh_slave.io.myXCordinate := B(1)
+  mesh_slave.io.myYCordinate := B(1)
 
 
-
+}
 
 
 
