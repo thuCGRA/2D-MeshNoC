@@ -175,3 +175,27 @@ object TestStreamFifo {
     }
   }
 }
+
+object TestMeshNocTop {
+  def main(args: Array[String]): Unit = {
+
+    val vcsFlags = VCSFlags(
+      compileFlags = List(" +vcs+fsdbson"),
+      elaborateFlags = List("-LDFLAGS -Wl,--no-as-needed +fsdb+autoflush")
+    )
+
+    val compiled = SimConfig.withVCS(vcsFlags).withFsdbWave.allOptimisation.workspacePath("./simWorkspace/vcs/tb").compile(
+      rtl = new meshNocTop(meshNetworkConfig(xCordinateWidth = 2, yCordinateWidth = 2), meshEndpointStandardConfig(returnedFifoEnable = true),  meshLinkTieoffConfig())
+    )
+
+    val sim = compiled.doSim { dut =>
+      val period = 10
+      dut.clockDomain.forkStimulus(period)
+      for (i <- 0 to 100000) {
+        dut.clockDomain.waitSampling()
+      }
+      SimTimeout(100000 * period)
+      println("mem read & write successfully")
+    }
+  }
+}
