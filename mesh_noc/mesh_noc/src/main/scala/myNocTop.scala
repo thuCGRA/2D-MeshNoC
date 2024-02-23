@@ -29,7 +29,10 @@ object noc_top {
 //      .generateVerilog(new meshEndpoint(meshEndpointConfig(returnedFifoEnable = true))).printPruned()
 //      .generateVerilog(new meshEndpointStandard(meshEndpointStandardConfig(returnedFifoEnable = true))).printPruned()
 //      .generateVerilog(new meshLinkTieoff(meshLinkTieoffConfig())).printPruned()
-      .generateVerilog(new meshNetwork(meshNetworkConfig(xCordinateWidth = 2, yCordinateWidth = 2))).printPruned()
+//      .generateVerilog(new meshNetwork(meshNetworkConfig(xCordinateWidth = 2, yCordinateWidth = 2))).printPruned()
+//      .generateVerilog(new meshMasterExample(meshEndpointStandardConfig(returnedFifoEnable = true))).printPruned()
+//      .generateVerilog(new meshSlaveExample(meshEndpointStandardConfig(returnedFifoEnable = true))).printPruned()
+      .generateVerilog(new meshNocTop(meshNetworkConfig(xCordinateWidth = 2, yCordinateWidth = 2), meshEndpointStandardConfig(returnedFifoEnable = true),  meshLinkTieoffConfig())).printPruned()
   }
 }
 
